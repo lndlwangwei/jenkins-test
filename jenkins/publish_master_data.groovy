@@ -16,11 +16,10 @@ pipeline {
 
             steps {
                 sh "chmod +x ${scriptPath}/*"
+
+                sh "python $scriptPath/GenerateDiffSql.py"
             }
 
-//            steps {
-//                sh "python $scriptPath/GenerateDiffSql.py"
-//            }
         }
     }
 }

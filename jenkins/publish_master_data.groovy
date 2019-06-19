@@ -11,7 +11,7 @@ pipeline {
         stage('make scripts executable') {
             agent {label '28test'}
             environment {
-                scriptPath = "${WORKSPACE}/scripts/publish_master_data"
+                scriptPath = "${WORKSPACE}/jenkins/scripts/publish_master_data"
             }
 
             steps {

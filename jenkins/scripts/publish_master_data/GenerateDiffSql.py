@@ -39,10 +39,10 @@ def generateDeleteSql(tableName):
     for idValues in results:
         idValues = map(lambda id: str(id).replace("\"", "\\\""), idValues)
 
-        print deleteSqlTemplate % tuple(idValues)
+        # print deleteSqlTemplate % tuple(idValues)
         writeUtf8(deleteSqlTemplate % tuple(idValues))
 
-    print results
+    # print results
 
 # 生成diff sql
 def generateDiffSql(tableName):
@@ -63,20 +63,20 @@ def generateDiffSql(tableName):
     cursor.execute(sql)
     # 获取所有记录列表
     results = cursor.fetchall()
-    print results
+    # print results
 
     for row in results:
         valueList = ",".join(map(lambda x: "\"%s\"" % str(x).replace("\"", "\\\""), row))
         # print "%s(%s)" % (sqlPart1, valueList)
 
-        print "%s(%s) %s" % (sqlPart1, valueList, updateStatement)
+        # print "%s(%s) %s" % (sqlPart1, valueList, updateStatement)
         writeUtf8("%s(%s) %s" % (sqlPart1, valueList, updateStatement))
 
 for table in tables:
     writeUtf8("# %s的diff sql >>>>>>>>>>>>>>>>>>>>>>>>> start\n" % table)
     generateDiffSql(table)
     writeUtf8("# 以上是%s的diff sql <<<<<<<<<<<<<<<<<<<< end\n" % table)
-    print '\n'
+    # print '\n'
 
 file.close()
 

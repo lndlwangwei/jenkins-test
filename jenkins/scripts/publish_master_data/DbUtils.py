@@ -80,8 +80,8 @@ db = MySQLdb.connect("10.1.22.28", "xkw", "xkw.com1QAZ", "mdm", charset='utf8')
 cursor = db.cursor()
 
 
-print getDeleteSqlStatement(cursor, "similar_catalog_group")
-print getQueryDeletedDataSqlStatement(cursor, "similar_catalog_group")
-
-a = ("12", "b")
-print "12" in a
+# print getDeleteSqlStatement(cursor, "similar_catalog_group")
+# print getQueryDeletedDataSqlStatement(cursor, "similar_catalog_group")
+#
+# a = ("12", "b")
+# print "12" in a

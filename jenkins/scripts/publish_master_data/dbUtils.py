@@ -55,9 +55,9 @@ def getDeleteSqlStatement(cursor, tableName):
         if not sql.endswith("where "):
             sql += " and "
 
-        sql += primaryKey + " = %s"
+        sql += primaryKey + " = \"%s\""
 
-    return sql
+    return sql + ";"
 
 
 # 生成 获取试运行环境删除的数据的sql

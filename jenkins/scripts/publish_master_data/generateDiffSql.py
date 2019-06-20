@@ -25,7 +25,7 @@ def resolveColumnValue(value):
     if value == None:
         return 'null'
     else:
-        return "\"%s\"" % str(value).replace("\"", "\\\"")
+        return "\'%s\'" % str(value).replace("\'", "\\\'")
 
 # 生成delete diff sql
 def generateDeleteSql(tableName):
@@ -42,9 +42,9 @@ def generateDeleteSql(tableName):
         return
 
 
-    ids = map(lambda row: str(row[0]).replace("\"", "\\\""), results)
+    ids = map(lambda row: str(row[0]).replace("\'", "\\\'"), results)
     for idValues in results:
-        idValues = map(lambda id: str(id).replace("\"", "\\\""), idValues)
+        idValues = map(lambda id: str(id).replace("\'", "\\\'"), idValues)
 
         # print deleteSqlTemplate % tuple(idValues)
         writeUtf8(deleteSqlTemplate % tuple(idValues))

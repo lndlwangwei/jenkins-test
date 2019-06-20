@@ -22,7 +22,7 @@ def writeUtf8( content):
 
 # 将所有字段值都转成字符串
 def resolveColumnValue(value):
-    if value == 'NULL' or value == 'null':
+    if value == 'NULL' or value == 'null' or value == 'None':
         return 'null'
     else:
         return "\"%s\"" % str(value).replace("\"", "\\\"")

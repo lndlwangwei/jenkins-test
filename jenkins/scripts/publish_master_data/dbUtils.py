@@ -77,7 +77,7 @@ def getQueryFields(cursor, tableName):
     sql = "select column_name, column_type from information_schema.columns where table_schema='mdm' and table_name='%s'" % tableName
     cursor.execute(sql)
 
-    return map(lambda row: convertBitToInt(row[0], row[1]), cursor.fetchall())
+    return ",".join(map(lambda row: convertBitToInt(row[0], row[1]), cursor.fetchall()))
 
 def convertBitToInt(columnName, type):
     if  type.startswith('bit'):

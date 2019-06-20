@@ -1,15 +1,17 @@
 # -*- coding: UTF-8 -*-
 import codecs
 import MySQLdb
+import sys
 import DbUtils
 
 tables = ("similar_catalog_group",)
+diffSqlFile = sys.argv[0]
 # tables = ("knowledge_points",
 #           # "similar_catalog_group", "tcatalog_kpoint",
 #           "textbook_attachment","textbook_catalogs", "textbook_versions", "textbooks", "version_families", "kpoint_cards",
 #           "exam_areas", "exam_subjects", "exam_area_subject", "tricks", "trick_cards")
 
-file = codecs.open("/home/xkw/wangwei/mdm_diff.sql", "w+", "utf-8")
+file = codecs.open(diffSqlFile, "w+", "utf-8")
 db = MySQLdb.connect("10.1.22.28", "xkw", "xkw.com1QAZ", "mdm", charset='utf8')
 cursor = db.cursor()
 

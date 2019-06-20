@@ -22,7 +22,7 @@ def writeUtf8( content):
 
 # 处理字段值
 def resolveColumnValue(value):
-    if value == 'NULL' or value == 'null' or value == 'None':
+    if value == None:
         return 'null'
     elif isinstance(value, (int, long, float)):
         return str(value)

@@ -4,10 +4,10 @@ import MySQLdb
 import sys
 import dbUtils
 
-# tables = ("similar_catalog_group",)
-tables = ("knowledge_points","similar_catalog_group", "tcatalog_kpoint","textbook_attachment",
-          "textbook_catalogs", "textbook_versions", "textbooks", "version_families", "kpoint_cards",
-          "exam_areas", "exam_subjects", "exam_area_subject", "tricks", "trick_cards")
+tables = ("textbooks",)
+# tables = ("knowledge_points","similar_catalog_group", "tcatalog_kpoint","textbook_attachment",
+#           "textbook_catalogs", "textbook_versions", "textbooks", "version_families", "kpoint_cards",
+#           "exam_areas", "exam_subjects", "exam_area_subject", "tricks", "trick_cards")
 
 diffSqlFile = sys.argv[1]
 file = codecs.open(diffSqlFile, "w+", "utf-8")
@@ -22,7 +22,7 @@ def writeUtf8( content):
 
 # 将所有字段值都转成字符串
 def resolveColumnValue(value):
-    if value == 'NULL' or value == 'null' or value == 'None':
+    if value == None:
         return 'null'
     else:
         return "\"%s\"" % str(value).replace("\"", "\\\"")
@@ -63,7 +63,7 @@ def generateDiffSql(tableName):
     columnList = ','.join(allColumns)
     sqlPart1 = "insert into %s(%s) value " % (tableName, columnList)
     # SQL 查询语句
-    sql = "select * from mdm_pilot.%s" % tableName
+    sql = "select * from mdm_pilot.%s where gradeid is null" % tableName
 
     cursor = db.cursor()
     # 执行SQL语句

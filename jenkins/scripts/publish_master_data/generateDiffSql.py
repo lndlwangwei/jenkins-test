@@ -73,6 +73,7 @@ def generateDiffSql(tableName):
         # print "%s(%s) %s" % (sqlPart1, valueList, updateStatement)
         writeUtf8("%s(%s) %s" % (sqlPart1, valueList, updateStatement))
 
+writeUtf8("use mdm;")
 for table in tables:
     writeUtf8("# %s的diff sql >>>>>>>>>>>>>>>>>>>>>>>>> start\n" % table)
     generateDiffSql(table)

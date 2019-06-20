@@ -63,7 +63,7 @@ def generateDiffSql(tableName):
     columnList = ','.join(allColumns)
     sqlPart1 = "insert into %s(%s) value " % (tableName, columnList)
     # SQL 查询语句
-    sql = "select * from mdm_pilot.%s" % tableName
+    sql = "select %s from mdm_pilot.%s" % (dbUtils.getQueryFields(cursor, tableName), tableName)
 
     cursor = db.cursor()
     # 执行SQL语句

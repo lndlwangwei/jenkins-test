@@ -25,7 +25,7 @@ def resolveColumnValue(value):
     if value == 'NULL' or value == 'null' or value == 'None':
         return 'null'
     elif isinstance(value, (int, long, float)):
-        return value
+        return str(value)
     else:
         return "\'%s\'" % str(value).replace("\'", "\\\'")
 

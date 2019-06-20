@@ -20,10 +20,12 @@ def writeUtf8( content):
     file.write(content.decode("utf-8"))
     file.write("\n")
 
-# 将所有字段值都转成字符串
+# 处理字段值
 def resolveColumnValue(value):
-    if value == None:
+    if value == 'NULL' or value == 'null' or value == 'None':
         return 'null'
+    elif isinstance(value, (int, long, float)):
+        return value
     else:
         return "\'%s\'" % str(value).replace("\'", "\\\'")
 

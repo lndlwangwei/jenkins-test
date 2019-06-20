@@ -3,12 +3,13 @@ pipeline {
     environment {
         scriptPath = "${WORKSPACE}/jenkins/scripts/publish_master_data"
         diffSqlFile = "/home/xkw/wangwei/mdm_diff.sql"
+        dbBackupFile = "/home/xkw/wangwei/backup/mdm.sql"
     }
 
     agent {label '28test'}
 
     stages {
-        // 准备相关的脚本
+        // 生成diff sql文件
         stage('generate diff sql') {
 
             steps {
@@ -18,7 +19,19 @@ pipeline {
                 // 执行生成diff sql的脚本文件
                 sh "python $scriptPath/GenerateDiffSql.py $diffSqlFile"
             }
+        }
 
+        stage('backup mdm prod database') {
+            steps {
+                sh "mysqldump -uxkw -pxkw.com1QAZ mdm > $dbBackupFile"
+            }
+        }
+
+        // 将diff sql应用到正式环境
+        stage('apply diff sql') {
+            steps {
+                sh "mysql -uxkw -pxkw.com1QAZ mdm < $diffSqlFile"
+            }
         }
     }
 }

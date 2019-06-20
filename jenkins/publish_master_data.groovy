@@ -30,7 +30,7 @@ pipeline {
         // 将diff sql应用到正式环境
         stage('apply diff sql') {
             steps {
-                sh "mysql -uxkw -pxkw.com1QAZ mdm -e source $diffSqlFile"
+                sh "mysql -uxkw -pxkw.com1QAZ -e \"source $diffSqlFile\""
             }
         }
     }

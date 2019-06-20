@@ -5,14 +5,14 @@ import sys
 import dbUtils
 
 tables = ("similar_catalog_group",)
-diffSqlFile = sys.argv[1]
-print "print diff sql file : %s" % diffSqlFile
 # tables = ("knowledge_points",
 #           # "similar_catalog_group", "tcatalog_kpoint",
 #           "textbook_attachment","textbook_catalogs", "textbook_versions", "textbooks", "version_families", "kpoint_cards",
 #           "exam_areas", "exam_subjects", "exam_area_subject", "tricks", "trick_cards")
 
+diffSqlFile = sys.argv[1]
 file = codecs.open(diffSqlFile, "w+", "utf-8")
+
 db = MySQLdb.connect("10.1.22.28", "xkw", "xkw.com1QAZ", "mdm", charset='utf8')
 cursor = db.cursor()
 

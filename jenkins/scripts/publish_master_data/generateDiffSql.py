@@ -4,10 +4,10 @@ import MySQLdb
 import sys
 import dbUtils
 
-tables = ("textbooks",)
-# tables = ("knowledge_points","similar_catalog_group", "tcatalog_kpoint","textbook_attachment",
-#           "textbook_catalogs", "textbook_versions", "textbooks", "version_families", "kpoint_cards",
-#           "exam_areas", "exam_subjects", "exam_area_subject", "tricks", "trick_cards")
+# tables = ("textbooks",)
+tables = ("knowledge_points","similar_catalog_group", "tcatalog_kpoint","textbook_attachment",
+          "textbook_catalogs", "textbook_versions", "textbooks", "version_families", "kpoint_cards",
+          "exam_areas", "exam_subjects", "exam_area_subject", "tricks", "trick_cards")
 
 diffSqlFile = sys.argv[1]
 file = codecs.open(diffSqlFile, "w+", "utf-8")
@@ -63,7 +63,7 @@ def generateDiffSql(tableName):
     columnList = ','.join(allColumns)
     sqlPart1 = "insert into %s(%s) value " % (tableName, columnList)
     # SQL 查询语句
-    sql = "select * from mdm_pilot.%s where gradeid is null" % tableName
+    sql = "select * from mdm_pilot.%s" % tableName
 
     cursor = db.cursor()
     # 执行SQL语句

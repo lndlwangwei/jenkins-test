@@ -20,6 +20,13 @@ def writeUtf8( content):
     file.write(content.decode("utf-8"))
     file.write("\n")
 
+# 将所有字段值都转成字符串
+def resolveColumnValue(value):
+    if value == 'NULL' or value == 'null':
+        return 'null'
+    else:
+        return "\"%s\"" % str(value).replace("\"", "\\\"")
+
 # 生成delete diff sql
 def generateDeleteSql(tableName):
     global cursor
@@ -66,7 +73,7 @@ def generateDiffSql(tableName):
     # print results
 
     for row in results:
-        valueList = ",".join(map(lambda x: "\"%s\"" % str(x).replace("\"", "\\\""), row))
+        valueList = ",".join(map(lambda x: resolveColumnValue(x), row))
         # print "%s(%s)" % (sqlPart1, valueList)
 
         # print "%s(%s) %s" % (sqlPart1, valueList, updateStatement)
@@ -75,7 +82,9 @@ def generateDiffSql(tableName):
 writeUtf8("use mdm;")
 for table in tables:
     writeUtf8("# %s的diff sql >>>>>>>>>>>>>>>>>>>>>>>>> start\n" % table)
+    writeUtf8("begin;")
     generateDiffSql(table)
+    writeUtf8("commit;")
     writeUtf8("# 以上是%s的diff sql <<<<<<<<<<<<<<<<<<<< end\n" % table)
     # print '\n'
 

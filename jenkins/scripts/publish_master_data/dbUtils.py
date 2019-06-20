@@ -1,10 +1,8 @@
 # -*- coding: UTF-8 -*-
-import MySQLdb
 import sys
 
 reload(sys)
 sys.setdefaultencoding('utf8')
-
 
 def getColumnNames(cursor, tableName):
     sql = "select column_name from information_schema.columns where table_schema='mdm' and table_name='%s'" % tableName
@@ -32,7 +30,7 @@ def getUpdateStatement(cursor, tableName):
     # print statement
     return statement + ";"
 
-
+# 获取主键列
 def getPrimaryKeyColumns(cursor, tableName):
     sql = "SELECT k.column_name FROM information_schema.table_constraints t \
             JOIN information_schema.key_column_usage k \
@@ -75,13 +73,3 @@ def getQueryDeletedDataSqlStatement(cursor, tableName):
         map(lambda column: "prod." + column, primaryKeys)))
     return sql
 
-
-db = MySQLdb.connect("10.1.22.28", "xkw", "xkw.com1QAZ", "mdm", charset='utf8')
-cursor = db.cursor()
-
-
-# print getDeleteSqlStatement(cursor, "similar_catalog_group")
-# print getQueryDeletedDataSqlStatement(cursor, "similar_catalog_group")
-#
-# a = ("12", "b")
-# print "12" in a

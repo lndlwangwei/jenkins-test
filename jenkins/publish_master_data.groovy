@@ -1,7 +1,7 @@
 pipeline {
 
     environment {
-        scriptPath = "${WORKSPACE}/scripts/publish_master_data"
+        scriptPath = "${WORKSPACE}/jenkins/scripts/publish_master_data"
         diffSqlFile = "/home/xkw/wangwei/mdm_diff.sql"
     }
 

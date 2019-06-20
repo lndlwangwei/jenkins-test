@@ -17,7 +17,7 @@ pipeline {
                 sh "chmod +x ${scriptPath}/*"
 
                 // 执行生成diff sql的脚本文件
-                sh "python $scriptPath/GenerateDiffSql.py $diffSqlFile"
+                sh "python $scriptPath/generateDiffSql.py $diffSqlFile"
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
         // 将diff sql应用到正式环境
         stage('apply diff sql') {
             steps {
-                sh "mysql -uxkw -pxkw.com1QAZ -e \"use mdm; source $diffSqlFile\""
+                sh "$scriptPath/applyDiffSql.sh $diffSqlFile"
             }
         }
     }

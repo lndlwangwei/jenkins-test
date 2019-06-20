@@ -2,7 +2,7 @@
 import codecs
 import MySQLdb
 import sys
-import DbUtils
+import dbUtils
 
 tables = ("similar_catalog_group",)
 diffSqlFile = sys.argv[1]
@@ -25,9 +25,9 @@ def writeUtf8( content):
 def generateDeleteSql(tableName):
     global cursor
 
-    deleteSqlTemplate = DbUtils.getDeleteSqlStatement(cursor, tableName)
+    deleteSqlTemplate = dbUtils.getDeleteSqlStatement(cursor, tableName)
 
-    sql = DbUtils.getQueryDeletedDataSqlStatement(cursor, tableName)
+    sql = dbUtils.getQueryDeletedDataSqlStatement(cursor, tableName)
 
     cursor.execute(sql)
 
@@ -51,9 +51,9 @@ def generateDiffSql(tableName):
     generateDeleteSql(tableName)
     global cursor
     # 获取列名
-    allColumns = DbUtils.getColumnNames(cursor, tableName)
+    allColumns = dbUtils.getColumnNames(cursor, tableName)
     # 获取update从句
-    updateStatement = DbUtils.getUpdateStatement(cursor, tableName)
+    updateStatement = dbUtils.getUpdateStatement(cursor, tableName)
     columnList = ','.join(allColumns)
     sqlPart1 = "insert into %s(%s) value " % (tableName, columnList)
     # SQL 查询语句

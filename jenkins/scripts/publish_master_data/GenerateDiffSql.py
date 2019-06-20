@@ -5,7 +5,7 @@ import sys
 import DbUtils
 
 tables = ("similar_catalog_group",)
-diffSqlFile = sys.argv[0]
+diffSqlFile = sys.argv[1]
 print "print diff sql file : %s" % diffSqlFile
 # tables = ("knowledge_points",
 #           # "similar_catalog_group", "tcatalog_kpoint",

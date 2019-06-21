@@ -39,6 +39,9 @@ pipeline {
         // 将diff sql应用到正式环境
         stage('apply diff sql') {
             steps {
+                // diff file中添加use mdm语句
+                sh "sed -i '1i\\use mdm;' $diffSqlFile"
+
                 sh "mysql -uxkw -pxkw.com1QAZ < $diffSqlFile"
             }
         }

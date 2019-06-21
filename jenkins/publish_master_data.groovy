@@ -29,7 +29,7 @@ pipeline {
                 sh "chmod +x ${scriptPath}/*"
 
                 // 执行生成diff sql的脚本文件
-                sh "python $scriptPath/generateDiffSql.py $diffSqlFile"
+                sh "python $scriptPath/appendDiffSql.py $diffSqlFile"
             }
         }
 

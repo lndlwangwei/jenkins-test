@@ -17,8 +17,14 @@ pipeline {
                         "textbook_versions textbooks version_families kpoint_cards exam_areas exam_subjects exam_area_subject tricks trick_cards " +
                         " > $diffSqlFile"
 
+
+            }
+        }
+
+        stage('just test') {
+            steps {
                 if(fileExists publish_master_data/dbUtils.py) {
-                    echo "true"
+                    echo "true".size()
                 }
                 else {
                     echo "false"

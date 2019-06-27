@@ -26,7 +26,7 @@ pipeline {
 
         stage('just test') {
             when {
-                equals expected: true, actual: {fileExists "publish_master_data/dbUtils.py"}
+                equals expected: true, actual: 1 > 0
             }
             steps {
                 echo "dbUtils.py exists!"

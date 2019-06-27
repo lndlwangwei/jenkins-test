@@ -23,12 +23,8 @@ pipeline {
 
         stage('just test') {
             steps {
-                if(true) {
-                    echo "true".size()
-                }
-                else {
-                    echo "false"
-                }
+                fileExists publish_master_data/dbUtils.py
+
             }
         }
         // 生成diff sql文件

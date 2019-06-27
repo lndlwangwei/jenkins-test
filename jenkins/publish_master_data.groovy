@@ -26,7 +26,7 @@ pipeline {
 
         stage('just test') {
             when {
-                expression {fileExists "publish_master_data/dbUtils.py"}
+                expression {fileExists "publish_master_data/dbUtils.py" ==~ true}
 
             }
             steps {

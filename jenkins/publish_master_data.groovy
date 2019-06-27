@@ -8,6 +8,7 @@ pipeline {
 
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     }
 
     agent {label '28test'}
@@ -20,15 +21,13 @@ pipeline {
                         "knowledge_points similar_catalog_group tcatalog_kpoint textbook_attachment textbook_catalogs " +
                         "textbook_versions textbooks version_families kpoint_cards exam_areas exam_subjects exam_area_subject tricks trick_cards " +
                         " > $diffSqlFile"
-
-
             }
         }
 
         stage('just test') {
             steps {
-                echo "wangwei -test ${parameters.PERSON}"
-
+                echo "wangwei -test ${params.PERSON}"
+                echo "Choice: ${params.CHOICE}"
             }
         }
         // 生成diff sql文件

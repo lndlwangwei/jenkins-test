@@ -6,10 +6,10 @@ pipeline {
         dbBackupFile = "/home/xkw/wangwei/backup/mdm.sql"
     }
 
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-    }
+//    parameters {
+//        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+//        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+//    }
 
     agent {label '28test'}
 
@@ -25,9 +25,16 @@ pipeline {
         }
 
         stage('just test') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
             steps {
-//                echo "wangwei -test ${params.PERSON}"
-                echo "Choice: ${params.CHOICE}"
+                echo "Hello, ${PERSON}, nice to meet you."
             }
         }
         // 生成diff sql文件

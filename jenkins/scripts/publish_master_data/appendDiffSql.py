@@ -12,22 +12,10 @@ diffSqlFile = sys.argv[1]
 db = MySQLdb.connect("10.1.22.28", "xkw", "xkw.com1QAZ", "mdm", charset='utf8')
 cursor = db.cursor()
 
-updateStatements = {}
-
-for table in tables:
-    updateStatements[table] = " " + dbUtils.getUpdateStatement(table)
-
-print updateStatements
-
 file = codecs.open(diffSqlFile, "r", "utf-8")
 lines = file.readlines()
 file.close()
 file = codecs.open(diffSqlFile, "a", "utf-8")
-
-def writeUtf8( content):
-    global file
-    file.write(content.decode("utf-8"))
-    file.write("\n")
 
 # 生成delete diff sql
 def appendDeleteSql():
@@ -49,10 +37,7 @@ def appendDeleteSql():
         for idValues in results:
             idValues = map(lambda id: resolveColumnValue(id), idValues)
 
-            # print deleteSqlTemplate % tuple(idValues)
             writeUtf8(deleteSqlTemplate % tuple(idValues))
-
-    # print results
 
 # 处理字段值
 def resolveColumnValue(value):
@@ -63,18 +48,10 @@ def resolveColumnValue(value):
     else:
         return "\'%s\'" % str(value).replace("\'", "\\\'")
 
-# pattern = re.compile(u"^INSERT INTO `(.+?)`.+$")
-#
-# for line in lines:
-#     matchObject = pattern.match(line)
-#     if not matchObject:
-#         file.write(line)
-#         continue
-#
-#     tableName = matchObject.groups()[0]
-#     print tableName
-#     line = re.sub(";$", " " + updateStatements[tableName], line)
-#     file.write(line)
+def writeUtf8( content):
+    global file
+    file.write(content.decode("utf-8"))
+    file.write("\n")
 
 appendDeleteSql()
 

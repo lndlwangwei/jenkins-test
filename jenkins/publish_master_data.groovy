@@ -26,7 +26,8 @@ pipeline {
 
         stage('just test') {
             when {
-                fileExists "publish_master_data/dbUtils.py"
+                expression {fileExists "publish_master_data/dbUtils.py"}
+
             }
             steps {
                 echo "dbUtils.py exists!"

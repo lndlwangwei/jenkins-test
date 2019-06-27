@@ -23,7 +23,7 @@ pipeline {
 
         stage('just test') {
             steps {
-                if(fileExists publish_master_data/dbUtils.py) {
+                if(true) {
                     echo "true".size()
                 }
                 else {

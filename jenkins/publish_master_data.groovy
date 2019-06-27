@@ -6,6 +6,10 @@ pipeline {
         dbBackupFile = "/home/xkw/wangwei/backup/mdm.sql"
     }
 
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
+
     agent {label '28test'}
 
     stages {
@@ -23,8 +27,7 @@ pipeline {
 
         stage('just test') {
             steps {
-                result = fileExists "publish_master_data/dbUtils.py"
-                echo result
+                echo "wangwei -test ${parameters.PERSON}"
 
             }
         }

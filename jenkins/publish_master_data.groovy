@@ -16,9 +16,8 @@ pipeline {
                         "knowledge_points similar_catalog_group tcatalog_kpoint textbook_attachment textbook_catalogs " +
                         "textbook_versions textbooks version_families kpoint_cards exam_areas exam_subjects exam_area_subject tricks trick_cards " +
                         " > $diffSqlFile"
-//                sh "mysqldump -uxkw -pxkw.com1QAZ --add-drop-table=false --comments=false --replace --no-create-info mdm_pilot " +
-//                        "textbook_versions " +
-//                        " > $diffSqlFile"
+
+                fileExists publish_master_data/dbUtils.py
             }
         }
         // 生成diff sql文件

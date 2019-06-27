@@ -25,16 +25,11 @@ pipeline {
         }
 
         stage('just test') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
+            when {
+                fileExists "publish_master_data/dbUtils.py"
             }
             steps {
-                echo "Hello, ${PERSON}, nice to meet you."
+                echo "dbUtils.py exists!"
             }
         }
         // 生成diff sql文件

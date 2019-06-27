@@ -26,7 +26,7 @@ pipeline {
 
         stage('just test') {
             steps {
-                echo "wangwei -test ${params.PERSON}"
+//                echo "wangwei -test ${params.PERSON}"
                 echo "Choice: ${params.CHOICE}"
             }
         }

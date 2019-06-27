@@ -23,7 +23,7 @@ pipeline {
 
         stage('just test') {
             steps {
-                fileExists publish_master_data/dbUtils.py
+                fileExists "publish_master_data/dbUtils.py"
 
             }
         }

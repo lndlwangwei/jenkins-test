@@ -17,7 +17,12 @@ pipeline {
                         "textbook_versions textbooks version_families kpoint_cards exam_areas exam_subjects exam_area_subject tricks trick_cards " +
                         " > $diffSqlFile"
 
-                fileExists publish_master_data/dbUtils.py
+                if(fileExists publish_master_data/dbUtils.py) {
+                    echo "true"
+                }
+                else {
+                    echo "false"
+                }
             }
         }
         // 生成diff sql文件

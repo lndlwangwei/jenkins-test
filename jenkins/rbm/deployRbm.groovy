@@ -8,7 +8,7 @@ node('37test') {
         copyArtifacts(projectName: "${buildProjectName}")
 
         sh "rm -rf ${appDir}/webapps/ROOT/*"
-        sh "cp console-webapp/target/rbm-console-pilotrun ${appDir}/webapps/ROOT/"
+        sh "cp console-webapp/target/rbm-console-pilotrun.war ${appDir}/webapps/ROOT/"
     }
 
     stage('deploy') {

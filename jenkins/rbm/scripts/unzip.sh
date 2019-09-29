@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+cat ./rbm_pilot_profile
 . ./rbm_pilot_profile
 echo "server_name $server_home"
 echo "app_name ${app_name}"

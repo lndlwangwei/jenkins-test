@@ -5,7 +5,7 @@ node('28test') {
         sh 'mvn clean install -Dmaven.test.skip=true -P test'
         sh 'mvn clean install -Dmaven.test.skip=true -P pilotrun'
         sh 'mvn clean install -Dmaven.test.skip=true -P product'
-        archiveArtifacts 'console-webapp/target/*.jar'
+        archiveArtifacts 'console-webapp/target/*.war'
 
     }
 }

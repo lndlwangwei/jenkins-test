@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. $WORKSPACE/jenkins/rbm/scripts/rbm_test_profile
+. $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_profile
 echo "server_name $server_home"
 echo "app_name ${app_name}"
 

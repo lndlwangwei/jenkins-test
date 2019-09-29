@@ -4,7 +4,7 @@ def springInstrumentJar = '/data/lib/spring-instrument-5.1.4.RELEASE.jar'
 def jettyStartJar = '/opt/jetty-distribution-9.4.7.v20170914/start.jar'
 
 node('37test') {
-    def scriptDir = "$WORKSPACE/jenkins/rbm/scripts"
+    def scriptDir = "$WORKSPACE/jenkins/rbm-test/scripts"
     git 'https://github.com/lndlwangwei/jenkins-test.git'
 
     stage('prepare artifacts') {
@@ -16,6 +16,10 @@ node('37test') {
 
     stage('prepare scripts') {
         sh "chmod +x $scriptDir/*.sh"
+    }
+
+    stage('stop server') {
+        sh "$scriptDir/jetty-rbm.sh stop"
     }
 
     stage('deploy') {

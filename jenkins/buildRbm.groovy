@@ -6,7 +6,11 @@ node('28test') {
         sh 'mvn install -Dmaven.test.skip=true -P test'
         sh 'mvn install -Dmaven.test.skip=true -P pilotrun'
         sh 'mvn install -Dmaven.test.skip=true -P product'
-        sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
+
+        dir('console-website') {
+            sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
+        }
+
         archiveArtifacts 'console-webapp/target/*.war'
         archiveArtifacts 'console-website/rbm_test_client.zip'
     }

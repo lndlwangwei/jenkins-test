@@ -1,0 +1,16 @@
+JETTY_HOME=/opt/jetty-distribution-9.4.7.v20170914
+JETTY_BASE=/home/data/apps/rbm_server
+TMPDIR=/data/tmp
+JAVA_OPTIONS="-javaagent:/data/lib/spring-instrument-5.1.4.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
+
+nginx_conf=/usr/local/nginx/conf
+script_home=/home/xkwx/scripts/goagent
+temp_app_home=/home/data/apps/tempServer/rbm_server
+env=test
+
+# server脚本常规参数
+server_home=${app_home}/rbm_server
+temp_server_home=${temp_app_home}/${app_name}
+
+# client脚本常规参数
+client_home=${app_home}/$rbm_client

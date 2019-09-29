@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-cat rbm_pilot_profile
-cat $WORKSPACE/jenkins/rbm/scripts/rbm_pilot_profile
 . $WORKSPACE/jenkins/rbm/scripts/rbm_pilot_profile
 echo "server_name $server_home"
 echo "app_name ${app_name}"

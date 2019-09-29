@@ -1,2 +1,6 @@
-server_home=/home/data/apps/rbm_server
+JETTY_HOME=/opt/jetty-distribution-9.4.7.v20170914
+JETTY_BASE=/home/xkwx/apps/qbm_server
+JAVA_OPTIONS="-javaagent:/data/mavenrepository/org/springframework/spring-instrument/4.3.2.RELEASE/spring-instrument-4.3.2.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
+
+server_name=/home/data/apps/rbm_server
 app_name=rbm-console-pilotrun

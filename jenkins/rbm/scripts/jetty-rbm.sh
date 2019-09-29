@@ -19,6 +19,8 @@
 ##################################################
 NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 
+. $WORKSPACE/jenkins/rbm/scripts/rbm_pilot_profile
+
 # To get the service to restart correctly on reboot, uncomment below (3 lines):
 # ========================
 # chkconfig: 3 99 99
@@ -57,7 +59,7 @@ NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 # JAVA_OPTIONS
 #   Extra options to pass to the JVM
 #
-JETTY_HOME=/opt/jetty-distribution-9.4.7.v20170914
+#JETTY_HOME=/opt/jetty-distribution-9.4.7.v20170914
 #   Where Jetty is installed. If not set, the script will try go
 #   guess it by looking at the invocation path for the script
 #   The java system property "jetty.home" will be
@@ -65,7 +67,7 @@ JETTY_HOME=/opt/jetty-distribution-9.4.7.v20170914
 #
 #    <Arg><Property name="jetty.home" default="."/>/webapps/jetty.war</Arg>
 #
-JETTY_BASE=/home/xkwx/apps/qbm_server
+#JETTY_BASE=/home/xkwx/apps/qbm_server
 #   Where your Jetty base directory is.  If not set, the value from
 #   $JETTY_HOME will be used.
 #
@@ -399,7 +401,7 @@ TMPDIR="`cygpath -w $TMPDIR`"
 ;;
 esac
 
-JAVA_OPTIONS="-javaagent:/data/mavenrepository/org/springframework/spring-instrument/4.3.2.RELEASE/spring-instrument-4.3.2.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
+#JAVA_OPTIONS="-javaagent:/data/mavenrepository/org/springframework/spring-instrument/4.3.2.RELEASE/spring-instrument-4.3.2.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
 
 
 #####################################################

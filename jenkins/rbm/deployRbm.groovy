@@ -1,6 +1,6 @@
 def buildProjectName = 'rbm-console-build'
 def appDir = '/home/data/apps/rbm_server'
-def springInstrumentJar = '/data/lib/spring-instrument-5.0.2.RELEASE.jar'
+def springInstrumentJar = '/data/lib/spring-instrument-5.1.4.RELEASE.jar'
 def jettyStartJar = '/opt/jetty-distribution-9.4.7.v20170914/start.jar'
 
 node('37test') {

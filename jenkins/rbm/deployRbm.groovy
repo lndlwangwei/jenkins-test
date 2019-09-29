@@ -5,6 +5,8 @@ def jettyStartJar = '/opt/jetty-distribution-9.4.7.v20170914/start.jar'
 def scriptDir = "$WORKSPACE/jenkins/rbm/scripts"
 
 node('37test') {
+    git 'https://github.com/lndlwangwei/jenkins-test.git'
+
     stage('prepare artifacts') {
         copyArtifacts(projectName: "${buildProjectName}")
 
@@ -13,7 +15,6 @@ node('37test') {
     }
 
     stage('prepare scripts') {
-        git 'https://github.com/lndlwangwei/jenkins-test.git'
         sh "chmod +x $scriptDir/*.sh"
     }
 

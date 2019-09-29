@@ -21,6 +21,8 @@ node('37test') {
     stage('deploy') {
         sh "$scriptDir/unzip.sh"
 //        sh "java -javaagent:${springInstrumentJar} -Dfile.encoding=UTF-8 -jar ${jettyStartJar} jetty.base=${appDir} > /dev/null &"
-        sh "$scriptDir/jetty-rbm.sh start"
+        withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
+            sh "$scriptDir/jetty-rbm.sh start"
+        }
     }
 }

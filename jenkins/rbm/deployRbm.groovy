@@ -6,6 +6,6 @@ node('rbmpl') {
 //        copyArtifacts(projectName: "${buildProjectName}")
 //
 //        sh "cp console-webapp/target/*.war /data/apps/test"
-        sh "echo 'hello rbmpl' > /data/apps/test"
+        sh "echo 'hello rbmpl' > /data/apps/test/hello.txt"
     }
 }

@@ -11,4 +11,5 @@ node('37test') {
         sh "unzip ${appDir}/${artifactName}"
         sh "rm -f ${appDir}/${artifactName}"
     }
+
 }

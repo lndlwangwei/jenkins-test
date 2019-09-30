@@ -8,7 +8,7 @@ node('37test') {
 
         sh "rm -rf ${appDir}/*"
         sh "cp console-website/${artifactName} ${appDir}"
-        sh "unzip ${appDir}/${artifactName}"
+        sh "unzip ${appDir}/${artifactName} -d ${appDir}"
         sh "rm -f ${appDir}/${artifactName}"
     }
 

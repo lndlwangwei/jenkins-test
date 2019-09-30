@@ -10,7 +10,6 @@ node('37test') {
         sh "cp console-website/${artifactName} ${appDir}"
         sh "unzip ${appDir}/${artifactName} -d ${appDir}"
         sh "rm -f ${appDir}/${artifactName}"
-
     }
 
 }

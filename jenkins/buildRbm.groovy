@@ -13,7 +13,7 @@ node('28test') {
         }
 
         archiveArtifacts 'console-webapp/target/*.war'
-        archiveArtifacts 'filehandler-webapp/target/*.war'
+        archiveArtifacts 'file-handler-webapp/target/*.war'
         archiveArtifacts 'api-webapp/target/*.war'
         archiveArtifacts 'console-website/rbm_test_client.zip'
     }

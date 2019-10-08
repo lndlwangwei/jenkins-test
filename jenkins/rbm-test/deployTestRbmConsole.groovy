@@ -13,7 +13,7 @@ node('37test') {
     }
 
     stage('prepare scripts') {
-        sh "chmod +x $scriptDir/*.sh"/home/data/apps/rbm-file-handler_server
+        sh "chmod +x $scriptDir/*.sh"
     }
 
     stage('stop server') {

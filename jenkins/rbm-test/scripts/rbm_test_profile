@@ -1,5 +1,10 @@
+if [ $1 == 'test' ]; then
+    JETTY_BASE=/home/data/apps/rbm_server
+elif
+    JETTY_BASE=/home/data/apps/rbm_server
+fi
+
 JETTY_HOME=/opt/jetty-distribution-9.4.7.v20170914
-JETTY_BASE=/home/data/apps/rbm_server
 TMPDIR=/data/tmp
 JAVA_OPTIONS="-javaagent:/data/lib/spring-instrument-5.1.4.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
 

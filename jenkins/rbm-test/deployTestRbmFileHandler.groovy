@@ -1,6 +1,6 @@
 def buildProjectName = 'rbm-build'
 def appDir = '/home/data/apps/rbm-file-handler_server'
-def artifact = 'console-webapp/target/rbm-console-test.war'
+def artifact = 'console-webapp/target/rbm-file-handler-test.war'
 
 node('37test') {
     def scriptDir = "$WORKSPACE/jenkins/rbm-test/scripts"

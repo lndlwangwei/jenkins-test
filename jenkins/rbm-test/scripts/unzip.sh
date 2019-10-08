@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 env=$1
-if [ $env == 'filehandler' ]; then
+if [ "$env" == 'filehandler' ]; then
     . $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_profile
 else
     . $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_file_handler_profile

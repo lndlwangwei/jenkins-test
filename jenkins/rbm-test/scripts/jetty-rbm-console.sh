@@ -517,7 +517,7 @@ case "$ACTION" in
     else
       if [ ! -f "$JETTY_PID" ] ; then
         echo "ERROR: no pid found at $JETTY_PID"
-        exit 1
+        exit 0
       fi
 
       PID=$(cat "$JETTY_PID" 2>/dev/null)

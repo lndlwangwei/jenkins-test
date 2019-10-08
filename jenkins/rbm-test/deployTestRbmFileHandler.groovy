@@ -18,14 +18,13 @@ node('37test') {
     }
 
     stage('stop server') {
-        sh "$scriptDir/jetty-rbm.sh stop"
+        sh "$scriptDir/jetty-rbm-filehandler.sh stop"
     }
 
     stage('deploy') {
         sh "$scriptDir/unzip.sh"
-//        sh "java -javaagent:${springInstrumentJar} -Dfile.encoding=UTF-8 -jar ${jettyStartJar} jetty.base=${appDir} > /dev/null &"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptDir/jetty-rbm.sh start > /dev/null"
+            sh "$scriptDir/jetty-rbm-filehandler.sh start > /dev/null"
         }
     }
 }

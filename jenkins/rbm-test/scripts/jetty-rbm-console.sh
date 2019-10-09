@@ -493,7 +493,7 @@ case "$ACTION" in
         echo "OK `date`"
       else
         echo "FAILED `date`"
-        exit 1
+        exit 0
       fi
     else
       echo "ok `date`"

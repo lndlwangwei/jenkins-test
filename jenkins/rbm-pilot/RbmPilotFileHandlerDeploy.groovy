@@ -17,7 +17,7 @@ node('rbmfh') {
 
     stage('prepare scripts') {
         copyArtifacts(projectName: "${buildProjectName}")
-        if (!fileExists(scriptLocalDir)) {
+        if (!fileExists($scriptLocalDir)) {
             sh "mkdir -p $scriptLocalDir"
         }
         sh "cp -r $scriptPath $scriptLocalDir"

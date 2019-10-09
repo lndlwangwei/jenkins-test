@@ -20,7 +20,7 @@ node('rbmfh') {
         if (!fileExists(scriptLocalDir)) {
             sh "mkdir -p $scriptLocalDir"
         }
-        cp "$scriptPath $scriptLocalDir"
+        sh "cp -r $scriptPath $scriptLocalDir"
         sh "chmod +x $scriptDir/*.sh"
     }
 

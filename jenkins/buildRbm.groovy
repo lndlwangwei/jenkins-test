@@ -18,5 +18,6 @@ node('28test') {
         archiveArtifacts 'file-handler-webapp/target/*.war'
         archiveArtifacts 'api-webapp/target/*.war'
         archiveArtifacts 'console-website/rbm_test_client.zip'
+        archiveArtifacts 'jenkins/*'
     }
 }

@@ -6,7 +6,7 @@ def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
 
 node('rbmfh') {
 
-    git 'https://github.com/lndlwangwei/jenkins-test.git'
+    //git 'https://github.com/lndlwangwei/jenkins-test.git'
 
     stage('prepare artifacts') {
         copyArtifacts(projectName: "${buildProjectName}")

@@ -1,7 +1,7 @@
 def buildProjectName = 'rbm-build'
 def appDir = '/data/apps/fh_pilot_server'
 def artifact = 'file-handler-webapp/target/rbm-file-handler-pilotrun.war'
-def scriptPath = 'scripts/rbm-pilot/*'
+def scriptPath = 'jenkins/scripts/rbm-pilot/*'
 def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
 
 node('rbmfh') {

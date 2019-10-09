@@ -23,8 +23,8 @@ node('37test') {
 
     stage('deploy') {
         sh "$scriptDir/unzip.sh filehandler"
-//        withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-//            sh "$scriptDir/jetty-rbm-filehandler.sh start > /dev/null"
-//        }
+        withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
+            sh "$scriptDir/jetty-rbm-filehandler.sh start"
+        }
     }
 }

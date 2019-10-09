@@ -19,7 +19,7 @@
 ##################################################
 NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 
-. $WORKSPACE/jenkins/rbm-test/scripts/profile
+. $WORKSPACE/jenkins/rbm-test/scripts/rbm_pilot_console_profile
 
 # To get the service to restart correctly on reboot, uncomment below (3 lines):
 # ========================
@@ -130,7 +130,7 @@ running()
 
 started()
 {
-  # wait for 60s to see "STARTED" in PID file, needs jetty-started.xml as argument
+  # wait for 120s to see "STARTED" in PID file, needs jetty-started.xml as argument
   for T in 1 2 3 4 5 6 7 9 10 11 12 13 14 15
   do
     sleep 4
@@ -493,7 +493,7 @@ case "$ACTION" in
         echo "OK `date`"
       else
         echo "FAILED `date`"
-        exit 1
+        exit 0
       fi
     else
       echo "ok `date`"
@@ -517,7 +517,7 @@ case "$ACTION" in
     else
       if [ ! -f "$JETTY_PID" ] ; then
         echo "ERROR: no pid found at $JETTY_PID"
-        exit 1
+        exit 0
       fi
 
       PID=$(cat "$JETTY_PID" 2>/dev/null)

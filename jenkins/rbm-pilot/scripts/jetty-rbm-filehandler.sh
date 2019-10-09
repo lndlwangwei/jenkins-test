@@ -19,7 +19,7 @@
 ##################################################
 NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 
-. $WORKSPACE/jenkins/rbm-test/scripts/temp_server_profile
+. $WORKSPACE/jenkins/rbm-test/scripts/rbm_pilot_file_handler_profile
 
 # To get the service to restart correctly on reboot, uncomment below (3 lines):
 # ========================
@@ -493,7 +493,7 @@ case "$ACTION" in
         echo "OK `date`"
       else
         echo "FAILED `date`"
-        exit 1
+        exit 0
       fi
     else
       echo "ok `date`"
@@ -517,7 +517,7 @@ case "$ACTION" in
     else
       if [ ! -f "$JETTY_PID" ] ; then
         echo "ERROR: no pid found at $JETTY_PID"
-        exit 1
+        exit 0
       fi
 
       PID=$(cat "$JETTY_PID" 2>/dev/null)

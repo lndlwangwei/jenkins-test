@@ -1,9 +1,9 @@
 def buildProjectName = 'rbm-build'
 def appDir = '/home/data/apps/rbm_server'
+def artifact = 'console-webapp/target/rbm-console-pilotrun.war'
 
-
-node('37test') {
-    def scriptDir = "$WORKSPACE/jenkins/rbm-test/scripts"
+node('rbmpl') {
+    def scriptDir = "$WORKSPACE/jenkins/rbm-pilot/scripts"
     git 'https://github.com/lndlwangwei/jenkins-test.git'
 
     stage('prepare artifacts') {
@@ -23,7 +23,6 @@ node('37test') {
 
     stage('deploy') {
         sh "$scriptDir/unzip.sh"
-//        sh "java -javaagent:${springInstrumentJar} -Dfile.encoding=UTF-8 -jar ${jettyStartJar} jetty.base=${appDir} > /dev/null &"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
             sh "$scriptDir/jetty-rbm-console.sh start > /dev/null"
         }

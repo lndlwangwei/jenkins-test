@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-. $WORKSPACE/jenkins/rbm-test/scripts/profile
+env=$1
+if [ "$env" == 'filehandler' ]; then
+    . $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_file_handler_profile
+else
+    . $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_profile
+fi
+
 echo "server_name $server_home"
 echo "app_name ${app_name}"
 

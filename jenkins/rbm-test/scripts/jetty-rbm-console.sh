@@ -134,6 +134,7 @@ started()
   for T in 1 2 3 4 5 6 7 9 10 11 12 13 14 15
   do
     sleep 8
+    echo "wangwei sleep: $T"
     [ -z "$(grep STARTED $1 2>/dev/null)" ] || return 0
     [ -z "$(grep STOPPED $1 2>/dev/null)" ] || return 1
     [ -z "$(grep FAILED $1 2>/dev/null)" ] || return 1

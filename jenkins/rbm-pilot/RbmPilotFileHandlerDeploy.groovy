@@ -7,16 +7,15 @@ def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
 node('rbmfh') {
 
     //git 'https://github.com/lndlwangwei/jenkins-test.git'
+    copyArtifacts(projectName: "${buildProjectName}")
 
     stage('prepare artifacts') {
-        copyArtifacts(projectName: "${buildProjectName}")
-
         sh "rm -rf ${appDir}/webapps/ROOT/*"
         sh "cp ${artifact} ${appDir}/webapps/ROOT/"
     }
 
     stage('prepare scripts') {
-        copyArtifacts(projectName: "${buildProjectName}")
+//        copyArtifacts(projectName: "${buildProjectName}")
         //if (!fileExists(scriptLocalDir)) {
         sh "mkdir -p $scriptLocalDir"
         //}
@@ -25,13 +24,13 @@ node('rbmfh') {
     }
 
     stage('stop server') {
-        sh "$scriptDir/jetty-rbm-filehandler.sh stop"
+        sh "$scriptLocalDir/jetty-rbm-filehandler.sh stop"
     }
 
     stage('deploy') {
-        sh "$scriptDir/unzip.sh filehandler"
+        sh "$scriptLocalDir/unzip.sh filehandler"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptDir/jetty-rbm-filehandler.sh start"
+            sh "$scriptLocalDir/jetty-rbm-filehandler.sh start"
         }
     }
 }

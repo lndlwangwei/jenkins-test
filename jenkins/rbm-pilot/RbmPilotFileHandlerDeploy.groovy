@@ -18,10 +18,10 @@ node('rbmfh') {
     stage('prepare scripts') {
         copyArtifacts(projectName: "${buildProjectName}")
         //if (!fileExists(scriptLocalDir)) {
-            sh "mkdir -p $scriptLocalDir"
+        sh "mkdir -p $scriptLocalDir"
         //}
         sh "cp -r $scriptPath $scriptLocalDir"
-        sh "chmod +x $scriptDir/*.sh"
+        sh "chmod +x $scriptLocalDir/*.sh"
     }
 
     stage('stop server') {

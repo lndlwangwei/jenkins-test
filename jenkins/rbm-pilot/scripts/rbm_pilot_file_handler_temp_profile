@@ -1,0 +1,8 @@
+JETTY_BASE=/data/apps/fh_server
+
+JETTY_HOME=/data/jetty
+TMPDIR=/data/tmp
+JAVA_OPTIONS="-javaagent:/data/lib/spring-instrument-5.0.2.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
+
+server_home=$JETTY_BASE
+app_name=rbm-file-handler-pilotrun

@@ -3,6 +3,7 @@ def appDir = '/data/apps/fh_pilot_server'
 def artifact = 'file-handler-webapp/target/rbm-file-handler-pilotrun.war'
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
+def env = "pilot"
 
 node('rbmfh') {
 
@@ -24,13 +25,13 @@ node('rbmfh') {
     }
 
     stage('stop server') {
-        sh "$scriptLocalDir/jetty-rbm-filehandler.sh stop"
+        sh "$scriptLocalDir/jetty.sh stop $env"
     }
 
     stage('deploy') {
         sh "$scriptLocalDir/unzip.sh filehandler"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/jetty-rbm-filehandler.sh start"
+            sh "$scriptLocalDir/jetty.sh start $env"
         }
     }
 }

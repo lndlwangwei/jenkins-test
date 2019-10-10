@@ -19,7 +19,7 @@
 ##################################################
 NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 
-. $WORKSPACE/jenkins/rbm-test/scripts/rbm_pilot_console_profile
+. $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_pilot_console_profile
 
 # To get the service to restart correctly on reboot, uncomment below (3 lines):
 # ========================

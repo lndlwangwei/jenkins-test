@@ -1,6 +1,7 @@
 def buildProjectName = 'rbm-build'
 def appDir = '/home/data/apps/rbm_server'
 def artifact = 'console-webapp/target/rbm-console-pilotrun.war'
+def env = 'console-pilot'
 
 node('rbmpl') {
     def scriptDir = "$WORKSPACE/jenkins/rbm-pilot/scripts"
@@ -18,13 +19,13 @@ node('rbmpl') {
     }
 
     stage('stop server') {
-        sh "$scriptDir/jetty-rbm-console.sh stop"
+        sh "$scriptDir/jetty.sh stop $env"
     }
 
     stage('deploy') {
         sh "$scriptDir/unzip.sh"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptDir/jetty-rbm-console.sh start > /dev/null"
+            sh "$scriptDir/jetty.sh start $env > /dev/null"
         }
     }
 }

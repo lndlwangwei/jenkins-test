@@ -20,9 +20,9 @@
 NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 
 env=$2
-if [ $env == 'test' ]; then
+if [ $env == 'console-test' ]; then
     . $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_console_profile
-elif [ $env == 'pilot' ]; then
+elif [ $env == 'console-pilot' ]; then
     . $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_pilot_console_profile
 elif [ $env == 'filehandler-pilot' ]; then
     . $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_pilot_file_handler_profile

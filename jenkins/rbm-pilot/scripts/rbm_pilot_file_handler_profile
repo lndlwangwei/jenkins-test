@@ -1,4 +1,4 @@
-JETTY_BASE=/data/apps/fh_server
+JETTY_BASE=/data/apps/fh_pilot_server
 
 JETTY_HOME=/data/jetty
 TMPDIR=/data/tmp

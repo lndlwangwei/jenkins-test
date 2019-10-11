@@ -3,7 +3,7 @@ def appDir = '/data/apps/fh_pilot_server'
 def artifact = 'file-handler-webapp/target/rbm-file-handler-pilotrun.war'
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
-def env = "pilot"
+def env = "filehandler-pilot"
 
 node('rbmfh') {
 

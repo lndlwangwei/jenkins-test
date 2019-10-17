@@ -5,4 +5,4 @@ TMPDIR=/data/tmp
 JAVA_OPTIONS="-javaagent:/data/lib/spring-instrument-5.1.4.RELEASE.jar -Dfile.encoding=utf-8 -Djetty.home=$JETTY_HOME -Djetty.base=$JETTY_BASE -Djava.io.tmpdir=$TMPDIR"
 
 server_home=$JETTY_BASE
-app_name=rbm-console-pilotrun
+app_name=rbm-console-product

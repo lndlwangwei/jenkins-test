@@ -1,4 +1,5 @@
 def buildProjectName = 'rbm-build'
+def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/rbm_server'
 def artifact = 'console-webapp/target/rbm-console-product.war'
 def scriptPath = 'jenkins/rbm-prod/scripts/*'
@@ -7,6 +8,7 @@ def env = 'console'
 
 node('rbm') {
     copyArtifacts(projectName: "${buildProjectName}")
+    copyArtifacts(projectName: "${buildScriptsProjectName}")
 
     stage('prepare artifacts') {
         sh "rm -rf ${appDir}/webapps/ROOT/*"

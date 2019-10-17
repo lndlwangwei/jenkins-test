@@ -1,4 +1,5 @@
 def buildProjectName = 'rbm-build'
+def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/fh_server'
 def artifact = 'file-handler-webapp/target/rbm-file-handler-product.war'
 def scriptPath = 'jenkins/rbm-prod/scripts/*'
@@ -7,6 +8,7 @@ def env = "filehandler"
 
 node('rbmfh') {
     copyArtifacts(projectName: "${buildProjectName}")
+    copyArtifacts(projectName: "${buildScriptsProjectName}")
 
     stage('prepare artifacts') {
         sh "rm -rf ${appDir}/webapps/ROOT/*"

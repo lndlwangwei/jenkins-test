@@ -1,30 +1,36 @@
 def buildProjectName = 'rbm-build'
+def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/home/data/apps/rbm-file-handler_server'
 def artifact = 'file-handler-webapp/target/rbm-file-handler-test.war'
+def scriptPath = 'jenkins/rbm-test/scripts/*'
+def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def env = "filehandler"
 
 node('37test') {
-    def scriptDir = "$WORKSPACE/jenkins/rbm-test/scripts"
-    git 'https://github.com/lndlwangwei/jenkins-test.git'
+    copyArtifacts(projectName: "${buildProjectName}")
+    copyArtifacts(projectName: "${buildScriptsProjectName}")
 
     stage('prepare artifacts') {
-        copyArtifacts(projectName: "${buildProjectName}")
-
         sh "rm -rf ${appDir}/webapps/ROOT/*"
         sh "cp ${artifact} ${appDir}/webapps/ROOT/"
     }
 
     stage('prepare scripts') {
-        sh "chmod +x $scriptDir/*.sh"
+        if (!fileExists(scriptLocalDir)) {
+            sh "mkdir -p $scriptLocalDir"
+        }
+        sh "cp -r $scriptPath $scriptLocalDir"
+        sh "chmod +x $scriptLocalDir/*.sh"
     }
 
     stage('stop server') {
-        sh "$scriptDir/jetty-rbm-filehandler.sh stop"
+        sh "$scriptLocalDir/jetty.sh stop $env"
     }
 
     stage('deploy') {
-        sh "$scriptDir/unzip.sh filehandler"
+        sh "$scriptLocalDir/unzip.sh $env"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptDir/jetty-rbm-filehandler.sh start"
+            sh "$scriptLocalDir/jetty.sh start $env"
         }
     }
 }

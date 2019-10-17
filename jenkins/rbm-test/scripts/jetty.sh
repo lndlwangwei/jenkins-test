@@ -19,7 +19,13 @@
 ##################################################
 NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 
-. $WORKSPACE/jenkins/rbm-test/scripts/rbm_test_file_handler_profile
+env=$2
+if [ $env == 'console' ]; then
+    . $WORKSPACE/jenkins/rbm-test/scripts/rbm_console_profile
+elif [ $env == 'filehandler' ]; then
+    . $WORKSPACE/jenkins/rbm-test/scripts/rbm_file_handler_profile
+fi
+
 
 # To get the service to restart correctly on reboot, uncomment below (3 lines):
 # ========================
@@ -130,7 +136,7 @@ running()
 
 started()
 {
-  # wait for 60s to see "STARTED" in PID file, needs jetty-started.xml as argument
+  # wait for 120s to see "STARTED" in PID file, needs jetty-started.xml as argument
   for T in 1 2 3 4 5 6 7 9 10 11 12 13 14 15
   do
     sleep 4

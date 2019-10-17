@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build'
+def buildProjectName = 'rbm-build-test'
 def appDir = '/home/data/apps/rbm_client'
 def artifactName = 'rbm_test_client.zip'
 

@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build'
+def buildProjectName = 'rbm-build-pilot'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/rbm_server'
 def artifact = 'console-webapp/target/rbm-console-pilotrun.war'

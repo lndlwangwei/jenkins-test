@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build'
+def buildProjectName = 'rbm-build-test'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/home/data/apps/rbm-file-handler_server'
 def artifact = 'file-handler-webapp/target/rbm-file-handler-test.war'

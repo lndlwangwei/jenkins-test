@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build'
+def buildProjectName = 'rbm-build-pilot'
 def appDir = '/data/apps/fh_pilot_server'
 def tempAppDir = ''
 def artifact = 'file-handler-webapp/target/rbm-file-handler-pilotrun.war'

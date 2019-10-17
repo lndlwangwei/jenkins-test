@@ -1,5 +1,6 @@
 def buildProjectName = 'rbm-build'
 def appDir = '/data/apps/fh_pilot_server'
+def tempAppDir = ''
 def artifact = 'file-handler-webapp/target/rbm-file-handler-pilotrun.war'
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
@@ -7,7 +8,6 @@ def env = "filehandler-pilot"
 
 node('rbmfh') {
 
-    //git 'https://github.com/lndlwangwei/jenkins-test.git'
     copyArtifacts(projectName: "${buildProjectName}")
 
     stage('prepare artifacts') {
@@ -16,12 +16,15 @@ node('rbmfh') {
     }
 
     stage('prepare scripts') {
-//        copyArtifacts(projectName: "${buildProjectName}")
-        //if (!fileExists(scriptLocalDir)) {
-        sh "mkdir -p $scriptLocalDir"
-        //}
+        if (!fileExists(scriptLocalDir)) {
+            sh "mkdir -p $scriptLocalDir"
+        }
         sh "cp -r $scriptPath $scriptLocalDir"
         sh "chmod +x $scriptLocalDir/*.sh"
+    }
+
+    stage('deploy temp server') {
+
     }
 
     stage('stop server') {

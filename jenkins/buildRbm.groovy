@@ -11,13 +11,13 @@ node('28test') {
         sh 'mvn clean'
         sh 'mvn install -Dmaven.test.skip=true -P test'
         sh 'mvn install -Dmaven.test.skip=true -P pilotrun'
-//        sh 'mvn install -Dmaven.test.skip=true -P product'
+        sh 'mvn install -Dmaven.test.skip=true -P product'
 
         dir('console-website') {
             sh 'npm install'
             sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
             sh 'ng build --configuration=pilotrun; cd dist/; zip -r ../rbm_pilotrun_client.zip ./'
-//            sh 'ng build --configuration=prod; cd dist/; zip -r ../rbm_prod_client.zip ./'
+            sh 'ng build --configuration=prod; cd dist/; zip -r ../rbm_prod_client.zip ./'
         }
 
         archiveArtifacts 'console-webapp/target/*.war'

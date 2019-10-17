@@ -1,5 +1,5 @@
 def buildProjectName = 'rbm-build'
-def appDir = '/home/data/apps/rbm_server'
+def appDir = '/data/apps/rbm_server'
 def artifact = 'console-webapp/target/rbm-console-pilotrun.war'
 def env = 'console-pilot'
 

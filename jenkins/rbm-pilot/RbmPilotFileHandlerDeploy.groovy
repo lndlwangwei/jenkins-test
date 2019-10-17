@@ -7,8 +7,8 @@ def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
 def env = "filehandler-pilot"
 
 node('rbmfh') {
-
     copyArtifacts(projectName: "${buildProjectName}")
+    copyArtifacts(projectName: "${buildScriptsProjectName}")
 
     stage('prepare artifacts') {
         sh "rm -rf ${appDir}/webapps/ROOT/*"
@@ -23,16 +23,12 @@ node('rbmfh') {
         sh "chmod +x $scriptLocalDir/*.sh"
     }
 
-    stage('deploy temp server') {
-
-    }
-
     stage('stop server') {
         sh "$scriptLocalDir/jetty.sh stop $env"
     }
 
     stage('deploy') {
-        sh "$scriptLocalDir/unzip.sh filehandler"
+        sh "$scriptLocalDir/unzip.sh $env"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
             sh "$scriptLocalDir/jetty.sh start $env"
         }

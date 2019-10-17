@@ -23,10 +23,6 @@ node('rbmfh') {
         sh "chmod +x $scriptLocalDir/*.sh"
     }
 
-    stage('deploy temp server') {
-
-    }
-
     stage('stop server') {
         sh "$scriptLocalDir/jetty.sh stop $env"
     }

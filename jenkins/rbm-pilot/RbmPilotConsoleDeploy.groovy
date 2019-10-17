@@ -1,31 +1,37 @@
 def buildProjectName = 'rbm-build'
+def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/rbm_server'
 def artifact = 'console-webapp/target/rbm-console-pilotrun.war'
-def env = 'console-pilot'
+def scriptPath = 'jenkins/rbm-prod/scripts/*'
+def scriptLocalDir = "/data/jenkins/rbm/scripts"
+def env = 'console'
 
-node('rbmpl') {
-    def scriptDir = "$WORKSPACE/jenkins/rbm-pilot/scripts"
-    git 'https://github.com/lndlwangwei/jenkins-test.git'
+node('rbm') {
+    copyArtifacts(projectName: "${buildProjectName}")
+    copyArtifacts(projectName: "${buildScriptsProjectName}")
 
     stage('prepare artifacts') {
-        copyArtifacts(projectName: "${buildProjectName}")
-
         sh "rm -rf ${appDir}/webapps/ROOT/*"
-        sh "cp console-webapp/target/rbm-console-test.war ${appDir}/webapps/ROOT/"
+        sh "cp $artifact ${appDir}/webapps/ROOT/"
     }
 
     stage('prepare scripts') {
-        sh "chmod +x $scriptDir/*.sh"
+        if (!fileExists(scriptLocalDir)) {
+            sh "mkdir -p $scriptLocalDir"
+        }
+        sh "cp -r $scriptPath $scriptLocalDir"
+        sh "chmod +x $scriptLocalDir/*.sh"
     }
 
     stage('stop server') {
-        sh "$scriptDir/jetty.sh stop $env"
+        sh "$scriptLocalDir/jetty.sh stop $env"
     }
 
     stage('deploy') {
-        sh "$scriptDir/unzip.sh"
+        sh "$scriptLocalDir/unzip.sh $env"
+
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptDir/jetty.sh start $env > /dev/null"
+            sh "$scriptLocalDir/jetty.sh start $env > /dev/null"
         }
     }
 }

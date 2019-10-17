@@ -31,7 +31,7 @@ node('rbm') {
         sh "$scriptLocalDir/unzip.sh $env"
 
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptDir/jetty.sh start $env > /dev/null"
+            sh "$scriptLocalDir/jetty.sh start $env > /dev/null"
         }
     }
 }

@@ -1,8 +1,8 @@
 def buildProjectName = 'rbm-build-pilot'
 def appDir = '/data/apps/rbm_client'
-def artifactName = 'rbm_prod_client.zip'
+def artifactName = 'rbm_pilotrun_client.zip'
 
-node('rbm') {
+node('rbmpl') {
     stage('deploy') {
         copyArtifacts(projectName: "${buildProjectName}")
 

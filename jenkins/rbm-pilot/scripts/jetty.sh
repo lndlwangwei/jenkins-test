@@ -22,7 +22,7 @@ NAME=$(echo $(basename $0) | sed -e 's/^[SK][0-9]*//' -e 's/\.sh$//')
 env=$2
 if [ $env == 'console' ]; then
     . $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_pilot_console_profile
-elif [ $env == 'filehandler' ]; then
+elif [ $env == 'filehandler-pilot' ]; then
     . $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_pilot_file_handler_profile
 fi
 

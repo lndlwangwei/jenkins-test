@@ -2,8 +2,8 @@ def buildProjectName = 'rbm-build-pilot'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/rbm_server'
 def artifact = 'console-webapp/target/rbm-console-pilotrun.war'
-def scriptPath = 'jenkins/rbm-prod/scripts/*'
-def scriptLocalDir = "/data/jenkins/rbm/scripts"
+def scriptPath = 'jenkins/rbm-pilot/scripts/*'
+def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
 def env = 'console'
 
 node('rbmpl') {

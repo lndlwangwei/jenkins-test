@@ -15,5 +15,6 @@ node('28test') {
         archiveArtifacts 'file-handler-webapp/target/*.war'
         archiveArtifacts 'api-webapp/target/*.war'
         archiveArtifacts 'console-website/rbm_pilotrun_client.zip'
+        archiveArtifacts 'sql/rbm_pilotrun_update.sql'
     }
 }

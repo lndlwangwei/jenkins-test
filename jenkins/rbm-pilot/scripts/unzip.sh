@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 env=$1
-if [ "$env" == 'filehandler' ]; then
+if [ "$env" == 'filehandler-pilot' ]; then
     . $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_file_handler_profile
 else
     . $WORKSPACE/jenkins/rbm-pilot/scripts/rbm_console_profile

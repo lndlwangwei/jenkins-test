@@ -4,6 +4,8 @@ def sqlScriptLocalDir = "/data/jenkins/rbm/sql"
 
 node('rbmpl') {
 
+    copyArtifacts(projectName: "${buildProjectName}")
+
     stage('prepare sql script') {
         if (!fileExists(sqlScriptLocalDir)) {
             sh "mkdir -p $sqlScriptLocalDir"

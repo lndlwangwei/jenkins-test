@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build-pilot'
+def buildProjectName = 'rbm-build-prod'
 def sqlScriptName = 'rbm_update.sql'
 def sqlScriptLocalDir = "/data/jenkins/rbm/sql"
 

@@ -2,7 +2,7 @@ def buildProjectName = 'rbm-build-pilot'
 def sqlScriptName = 'rbm_update.sql'
 def sqlScriptLocalDir = "/data/jenkins/rbm/sql"
 
-node('rbmpl') {
+node('rbm') {
 
     stage('prepare sql script') {
         if (!fileExists(sqlScriptLocalDir)) {

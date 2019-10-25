@@ -18,6 +18,6 @@ node('rbm') {
     }
 
     stage('review board test') {
-
+        sh 'echo 1234'
     }
 }

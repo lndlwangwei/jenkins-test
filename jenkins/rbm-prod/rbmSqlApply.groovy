@@ -16,4 +16,8 @@ node('rbm') {
     stage('apply sql') {
         sh "mysql -uxkw -pxkw.com1QAZ < $sqlScriptLocalDir/$sqlScriptName"
     }
+
+    stage('review board test') {
+
+    }
 }

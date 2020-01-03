@@ -21,8 +21,10 @@ node('37test') {
     }
 
     stage('backup old artifact') {
-        sh "rm -rf ${appDir}.bak"
-        sh "cp ${appDir}/*.jar ${appDir}.bak"
+        if (fileExists(appDir/artifactName)) {
+            sh "rm -rf ${appDir}.bak/*"
+            sh "cp ${appDir}/${artifactName} ${appDir}.bak"
+        }
     }
 
     stage('stop server') {

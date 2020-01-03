@@ -11,9 +11,14 @@ node('28test') {
 //            sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
 //        }
 
+        dir('api-docs') {
+            sh 'zip -r api-docs.zip .'
+        }
+
         archiveArtifacts 'console-webapp/target/*.jar'
         archiveArtifacts 'file-handler-webapp/target/*.jar'
         archiveArtifacts 'api-webapp/target/*.jar'
+        archiveArtifacts 'api-docs.zip'
 //        archiveArtifacts 'console-website/rbm_test_client.zip'
     }
 }

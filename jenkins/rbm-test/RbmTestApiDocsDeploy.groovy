@@ -15,7 +15,7 @@ node('37test') {
         sh "rm -f ${appDir}/${artifactName}"
     }
 
-    stage('replace domain') {
-        sh "sed -i \'s/localhost/wangwei/\' ${appDir}/lib/scripts.js"
-    }
+//    stage('replace domain') {
+//        sh "sed -i \'s/localhost/wangwei/\' ${appDir}/lib/scripts.js"
+//    }
 }

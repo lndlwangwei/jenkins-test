@@ -1,6 +1,6 @@
 def buildProjectName = 'rbm-build-pilot'
 def buildScriptsProjectName = 'rbm-build-scripts'
-def appDir = '/data/apps/rbm-file-handler_server'
+def appDir = '/data/apps/fh_pilot_server'
 def artifact = 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def serverPort = 8086

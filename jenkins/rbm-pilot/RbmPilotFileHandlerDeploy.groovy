@@ -5,7 +5,7 @@ def artifact = 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPS
 def artifactName = 'xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def serverPort = 8086
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
-def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def scriptLocalDir = "/data/jenkins/rbm/scripts"
 def env = "pilotrun"
 
 node('rbmfh') {

@@ -5,7 +5,7 @@ def artifact = 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
 def serverPort = 8085
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
-def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def scriptLocalDir = "/data/jenkins/rbm/scripts"
 def env = 'pilotrun'
 
 node('rbmpl') {

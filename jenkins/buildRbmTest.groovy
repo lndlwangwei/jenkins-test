@@ -18,7 +18,7 @@ node('28test') {
         archiveArtifacts 'console-webapp/target/*.jar'
         archiveArtifacts 'file-handler-webapp/target/*.jar'
         archiveArtifacts 'api-webapp/target/*.jar'
-        archiveArtifacts 'api-docs.zip'
+        archiveArtifacts 'api-docs/api-docs.zip'
 //        archiveArtifacts 'console-website/rbm_test_client.zip'
     }
 }

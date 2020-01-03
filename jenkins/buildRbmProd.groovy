@@ -15,9 +15,9 @@ node('28test') {
             sh 'zip -r api-docs.zip .'
         }
 
-        archiveArtifacts 'console-webapp/target/*.war'
-        archiveArtifacts 'file-handler-webapp/target/*.war'
-        archiveArtifacts 'api-webapp/target/*.war'
+        archiveArtifacts 'console-webapp/target/*.jar'
+        archiveArtifacts 'file-handler-webapp/target/*.jar'
+        archiveArtifacts 'api-webapp/target/*.jar'
         archiveArtifacts 'api-docs/api-docs.zip'
         archiveArtifacts 'console-website/rbm_prod_client.zip'
         archiveArtifacts 'sql/rbm_update.sql'

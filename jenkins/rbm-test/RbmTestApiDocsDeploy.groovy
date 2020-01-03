@@ -12,8 +12,10 @@ node('37test') {
         sh "rm -rf ${appDir}/*"
         sh "cp api-docs/${artifactName} ${appDir}"
         sh "unzip ${appDir}/${artifactName} -d ${appDir}"
-        sh "sed -i \'s/localhost:8087/wangwei:9002/\' ${appDir}/lib/scripts.js"
         sh "rm -f ${appDir}/${artifactName}"
     }
 
+    stage('replace domain') {
+        sh "sed -i \'s/localhost/wangwei/\' ${appDir}/lib/scripts.js"
+    }
 }

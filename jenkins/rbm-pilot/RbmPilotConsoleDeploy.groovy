@@ -1,19 +1,16 @@
 def buildProjectName = 'rbm-build-pilot'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/rbm_server'
-def artifact = 'console-webapp/target/rbm-console-pilotrun.war'
+def artifact = 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
+def artifactName = 'xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
+def serverPort = 8085
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
-def scriptLocalDir = "/data/jenkins/rbm-pilot/scripts"
-def env = 'console'
+def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def env = 'pilotrun'
 
 node('rbmpl') {
     copyArtifacts(projectName: "${buildProjectName}")
     copyArtifacts(projectName: "${buildScriptsProjectName}")
-
-    stage('prepare artifacts') {
-        sh "rm -rf ${appDir}/webapps/ROOT/*"
-        sh "cp $artifact ${appDir}/webapps/ROOT/"
-    }
 
     stage('prepare scripts') {
         if (!fileExists(scriptLocalDir)) {
@@ -23,15 +20,30 @@ node('rbmpl') {
         sh "chmod +x $scriptLocalDir/*.sh"
     }
 
+    stage('backup old artifact') {
+        if (fileExists("${appDir}/${artifactName}")) {
+            sh "rm -rf ${appDir}.bak/*"
+
+            if (!fileExists("${appDir}.bak")) {
+                sh "mkdir -p ${appDir}.bak"
+            }
+
+            sh "cp ${appDir}/${artifactName} ${appDir}.bak"
+        }
+    }
+
     stage('stop server') {
-        sh "$scriptLocalDir/jetty.sh stop $env"
+        sh "$scriptLocalDir/stopJarServer.sh $appDir"
+    }
+
+    stage('prepare artifacts') {
+        sh "rm -rf ${appDir}/*"
+        sh "cp $artifact ${appDir}/"
     }
 
     stage('deploy') {
-        sh "$scriptLocalDir/unzip.sh $env"
-
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/jetty.sh start $env > /dev/null"
+            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${serverPort} ${env} &"
         }
     }
 }

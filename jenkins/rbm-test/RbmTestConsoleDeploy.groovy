@@ -21,7 +21,7 @@ node('37test') {
     }
 
     stage('backup old artifact') {
-        if (fileExists(appDir/artifactName)) {
+        if (fileExists("${appDir}/${artifactName}")) {
             sh "rm -rf ${appDir}.bak/*"
             sh "cp ${appDir}/${artifactName} ${appDir}.bak"
         }

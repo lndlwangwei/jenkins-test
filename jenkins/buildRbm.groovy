@@ -15,9 +15,14 @@ node('28test') {
             sh 'ng build --configuration=prod; cd dist/; zip -r ../rbm_prod_client.zip ./'
         }
 
+        dir('api-docs') {
+            sh 'zip -r api-docs.zip .'
+        }
+
         archiveArtifacts 'console-webapp/target/*.war'
         archiveArtifacts 'file-handler-webapp/target/*.war'
         archiveArtifacts 'api-webapp/target/*.war'
+        archiveArtifacts 'api-docs/api-docs.zip'
         archiveArtifacts 'console-website/rbm_prod_client.zip'
     }
 }

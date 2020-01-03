@@ -11,9 +11,14 @@ node('28test') {
             sh 'ng build --configuration=pilotrun; cd dist/; zip -r ../rbm_pilotrun_client.zip ./'
         }
 
+        dir('api-docs') {
+            sh 'zip -r api-docs.zip .'
+        }
+
         archiveArtifacts 'console-webapp/target/*.war'
         archiveArtifacts 'file-handler-webapp/target/*.war'
         archiveArtifacts 'api-webapp/target/*.war'
+        archiveArtifacts 'api-docs/api-docs.zip'
         archiveArtifacts 'console-website/rbm_pilotrun_client.zip'
         archiveArtifacts 'sql/rbm_pilotrun_update.sql'
     }

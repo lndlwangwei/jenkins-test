@@ -3,6 +3,7 @@ def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/home/data/apps/rbm-file-handler_server'
 def artifact = 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
+def serverPort = 8086
 def scriptPath = 'jenkins/rbm-test/scripts/*'
 def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
 def env = "test"

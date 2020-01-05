@@ -11,7 +11,7 @@ node('37test') {
         }
         sh "rm -rf ${appDir}/*"
         sh "cp api-docs/${artifactName} ${appDir}"
-//        sh "unzip ${appDir}/${artifactName} -d ${appDir}"
+        sh "unzip ${appDir}/${artifactName} -d ${appDir}"
 //        sh "rm -f ${appDir}/${artifactName}"
     }
 

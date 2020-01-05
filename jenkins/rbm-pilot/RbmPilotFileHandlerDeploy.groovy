@@ -3,7 +3,6 @@ def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/fh_pilot_server'
 def artifact = 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
-def serverPort = 8386
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm/scripts"
 def env = "pilotrun"
@@ -43,7 +42,7 @@ node('rbmfh') {
 
     stage('deploy') {
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${serverPort} ${env} &"
+            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${env} &"
         }
     }
 }

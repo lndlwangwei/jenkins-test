@@ -3,7 +3,6 @@ def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/home/data/apps/rbm_server'
 def artifact = 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
-def serverPort = 8085
 def scriptPath = 'jenkins/rbm-test/scripts/*'
 def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
 def env = 'test'
@@ -43,7 +42,7 @@ node('37test') {
 
     stage('deploy') {
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${serverPort} ${env} &"
+            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${env} &"
         }
     }
 }

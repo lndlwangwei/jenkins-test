@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 workspace=$1
 artifactName=$2
-port=$3
-env=$4
+env=$3
 
 if [ -f ${workspace}/pid ]; then
     echo 'pid exists, 服务已经启动！'

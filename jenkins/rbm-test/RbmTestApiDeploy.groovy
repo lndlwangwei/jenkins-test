@@ -7,7 +7,6 @@ def env = 'test'
 def appDir = '/home/data/apps/rbs_server'
 def artifact = 'api-webapp/target/xkw-rbm-api-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-api-webapp-1.0-SNAPSHOT.jar'
-def serverPort = 8087
 
 node('37test') {
     copyArtifacts(projectName: "${buildProjectName}")
@@ -43,7 +42,7 @@ node('37test') {
 
     stage('deploy') {
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${serverPort} ${env} &"
+            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${env} &"
         }
     }
 }

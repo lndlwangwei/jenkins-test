@@ -13,7 +13,7 @@ node('28test') {
 
         dir('api-docs') {
 //            sh 'find . -type d -name ".svn"\\|xargs rm -rf'
-            sh 'zip -r api-docs.zip . -'
+            sh 'zip -r api-docs.zip . -x ".svn"'
         }
 
 //        archiveArtifacts 'console-webapp/target/*.jar'

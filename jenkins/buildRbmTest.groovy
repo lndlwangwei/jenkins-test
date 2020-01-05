@@ -5,14 +5,15 @@ node('28test') {
 
 //        sh 'mvn clean'
 //        sh 'mvn package -Dmaven.test.skip=true'
-
+//
 //        dir('console-website') {
 //            sh 'npm install'
 //            sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
 //        }
 
         dir('api-docs') {
-            sh 'zip -r api-docs.zip . -x \'.svn\''
+            sh 'find . -type d -name ".svn"|xargs rm -rf'
+            sh 'zip -r api-docs.zip .'
         }
 
 //        archiveArtifacts 'console-webapp/target/*.jar'

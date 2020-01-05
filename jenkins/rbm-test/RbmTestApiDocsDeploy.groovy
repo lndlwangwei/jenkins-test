@@ -16,6 +16,6 @@ node('37test') {
     }
 
     stage('replace domain') {
-        sh "sed -i \'s/localhost/wangwei/\' ${appDir}/lib/scripts.js"
+        sh "sed -i \'s/http:\\/\\/localhost:8087/http:\\/\\/10\\.1\\.1\\.37:9002/\' ${appDir}/lib/scripts.js"
     }
 }

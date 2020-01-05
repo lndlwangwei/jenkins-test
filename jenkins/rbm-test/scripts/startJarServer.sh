@@ -8,7 +8,7 @@ if [ -f ${workspace}/pid ]; then
     exit 0
 fi
 
-java -jar ${workspace}/${artifactName} --spring.profiles.active=${env} > /dev/null &
+java -Djava.io.tmpdir=/data/tmp -jar ${workspace}/${artifactName} --spring.profiles.active=${env} > /dev/null &
 
 echo "$!" > ${workspace}/pid
 echo "$!"

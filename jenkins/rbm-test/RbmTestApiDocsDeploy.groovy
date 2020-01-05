@@ -11,8 +11,8 @@ node('37test') {
         }
         sh "rm -rf ${appDir}/*"
         sh "cp api-docs/${artifactName} ${appDir}"
-        sh "unzip ${appDir}/${artifactName} -d ${appDir}"
-        sh "rm -f ${appDir}/${artifactName}"
+//        sh "unzip ${appDir}/${artifactName} -d ${appDir}"
+//        sh "rm -f ${appDir}/${artifactName}"
     }
 
 //    stage('replace domain') {

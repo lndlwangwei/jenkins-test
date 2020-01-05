@@ -16,6 +16,6 @@ node('rbmpl') {
     }
 
     stage('replace domain') {
-        sh "sed -i \'s/http:\\/\\/localhost:8087/http:\\/\\/10\\.1\\.1\\.37:8087/\' ${appDir}/lib/scripts.js"
+        sh "sed -i \'s/http:\\/\\/localhost:8087/http:\\/\\/rbm-pilot\\.xkw\\.com/\' ${appDir}/lib/scripts.js"
     }
 }

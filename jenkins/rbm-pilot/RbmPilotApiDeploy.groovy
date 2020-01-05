@@ -3,7 +3,7 @@ def buildScriptsProjectName = 'rbm-build-scripts'
 def scriptPath = 'jenkins/rbm-pilot/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm/scripts"
 
-def env = 'pilot'
+def env = 'pilotrun'
 def appDir = '/data/apps/rbs_server'
 def artifact = 'api-webapp/target/xkw-rbm-api-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-api-webapp-1.0-SNAPSHOT.jar'

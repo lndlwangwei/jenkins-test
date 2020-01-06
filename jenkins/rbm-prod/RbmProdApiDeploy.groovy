@@ -1,11 +1,12 @@
 def buildProjectName = 'rbm-build-prod'
 def buildScriptsProjectName = 'rbm-build-scripts'
-def appDir = '/data/apps/rbm_server'
-def artifact = 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
-def artifactName = 'xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
 def scriptPath = 'jenkins/rbm-prod/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm/scripts"
+
 def env = 'product'
+def appDir = '/data/apps/rbs_server'
+def artifact = 'api-webapp/target/xkw-rbm-api-webapp-1.0-SNAPSHOT.jar'
+def artifactName = 'xkw-rbm-api-webapp-1.0-SNAPSHOT.jar'
 
 node('rbm') {
     copyArtifacts(projectName: "${buildProjectName}")
@@ -26,7 +27,6 @@ node('rbm') {
             if (!fileExists("${appDir}.bak")) {
                 sh "mkdir -p ${appDir}.bak"
             }
-
             sh "cp ${appDir}/${artifactName} ${appDir}.bak"
         }
     }

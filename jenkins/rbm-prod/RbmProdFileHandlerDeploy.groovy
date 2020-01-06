@@ -1,19 +1,15 @@
 def buildProjectName = 'rbm-build-prod'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/fh_server'
-def artifact = 'file-handler-webapp/target/rbm-file-handler-product.war'
+def artifact = 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
+def artifactName = 'xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def scriptPath = 'jenkins/rbm-prod/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm/scripts"
-def env = "filehandler"
+def env = "product"
 
 node('rbmfh') {
     copyArtifacts(projectName: "${buildProjectName}")
     copyArtifacts(projectName: "${buildScriptsProjectName}")
-
-    stage('prepare artifacts') {
-        sh "rm -rf ${appDir}/webapps/ROOT/*"
-        sh "cp ${artifact} ${appDir}/webapps/ROOT/"
-    }
 
     stage('prepare scripts') {
         if (!fileExists(scriptLocalDir)) {
@@ -23,14 +19,30 @@ node('rbmfh') {
         sh "chmod +x $scriptLocalDir/*.sh"
     }
 
+    stage('backup old artifact') {
+        if (fileExists("${appDir}/${artifactName}")) {
+            sh "rm -rf ${appDir}.bak/*"
+
+            if (!fileExists("${appDir}.bak")) {
+                sh "mkdir -p ${appDir}.bak"
+            }
+
+            sh "cp ${appDir}/${artifactName} ${appDir}.bak"
+        }
+    }
+
     stage('stop server') {
-        sh "$scriptLocalDir/jetty.sh stop $env"
+        sh "$scriptLocalDir/stopJarServer.sh $appDir"
+    }
+
+    stage('prepare artifacts') {
+        sh "rm -rf ${appDir}/*"
+        sh "cp $artifact ${appDir}/"
     }
 
     stage('deploy') {
-        sh "$scriptLocalDir/unzip.sh $env"
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/jetty.sh start $env"
+            sh "$scriptLocalDir/startJarServer.sh ${appDir} ${artifactName} ${env} &"
         }
     }
 }

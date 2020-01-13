@@ -15,9 +15,9 @@ node('37test') {
     copyArtifacts(projectName: "${buildScriptsProjectName}")
 
     stage('prepare aspectjweaver jar') {
-        if (!fileExists(libDir)) {
-            sh "sudo mkdir -p ${libDir}"
-            sh "sudo chown -R xkwx.xkwx ${libDir}"
+        if (!fileExists(libDirInServer)) {
+            sh "sudo mkdir -p ${libDirInServer}"
+            sh "sudo chown -R xkwx.xkwx ${libDirInServer}"
         }
         if (!fileExists("${libDir}/${aspectjweaverJarName}")) {
             sh "${libDirInJenkins}/${aspectjweaverJarName} ${libDirInServer}"

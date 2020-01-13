@@ -5,11 +5,24 @@ def artifact = 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-console-webapp-1.0-SNAPSHOT.jar'
 def scriptPath = 'jenkins/rbm-test/scripts/*'
 def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def libDirInJenkins = "jenkins/lib/"
+def libDirInServer = "/data/lib"
+def aspectjweaverJarName = "aspectjweaver-1.9.5.jar"
 def env = 'test'
 
 node('37test') {
     copyArtifacts(projectName: "${buildProjectName}")
     copyArtifacts(projectName: "${buildScriptsProjectName}")
+
+    stage('prepare aspectjweaver jar') {
+        if (!fileExists(libDir)) {
+            sh "sudo mkdir -p ${libDir}"
+            sh "sudo chown -R xkwx.xkwx ${libDir}"
+        }
+        if (!fileExists("${libDir}/${aspectjweaverJarName}")) {
+            sh "${libDirInJenkins}/${aspectjweaverJarName} ${libDirInServer}"
+        }
+    }
 
     stage('prepare scripts') {
         if (!fileExists(scriptLocalDir)) {

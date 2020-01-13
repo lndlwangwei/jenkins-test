@@ -19,7 +19,7 @@ node('37test') {
             sh "sudo mkdir -p ${libDirInServer}"
             sh "sudo chown -R xkwx.xkwx ${libDirInServer}"
         }
-        if (!fileExists("${libDir}/${aspectjweaverJarName}")) {
+        if (!fileExists("${libDirInServer}/${aspectjweaverJarName}")) {
             sh "${libDirInJenkins}/${aspectjweaverJarName} ${libDirInServer}"
         }
     }

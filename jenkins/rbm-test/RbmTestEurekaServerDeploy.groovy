@@ -8,6 +8,9 @@ def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
 def env = 'test'
 
 node('37test') {
+    copyArtifacts(projectName: "${buildProjectName}")
+    copyArtifacts(projectName: "${buildScriptsProjectName}")
+
     stage('prepare appDir') {
         if (!fileExists("${appDir}")) {
             sh "sudo mkdir -p ${appDir}"

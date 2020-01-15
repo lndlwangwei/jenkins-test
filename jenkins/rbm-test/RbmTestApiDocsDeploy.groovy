@@ -1,8 +1,15 @@
 def buildProjectName = 'rbm-build-test'
-def appDir = '/home/data/apps/rbs_client'
+def appDir = '/data/apps/rbs_client'
 def artifactName = 'api-docs.zip'
 
-node('37test') {
+node('159test') {
+    stage('prepare appDir') {
+        if (!fileExists("${appDir}")) {
+            sh "sudo mkdir -p ${appDir}"
+            sh "sudo chown -R xkwx.xkwx ${appDir}"
+        }
+    }
+
     stage('deploy') {
         copyArtifacts(projectName: "${buildProjectName}")
 

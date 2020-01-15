@@ -1,18 +1,25 @@
 def buildProjectName = 'rbm-build-test'
 def buildScriptsProjectName = 'rbm-build-scripts'
-def appDir = '/home/data/apps/rbm-file-handler_server'
+def appDir = '/data/apps/rbm-file-handler_server'
 def artifact = 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar'
 def scriptPath = 'jenkins/rbm-test/scripts/*'
-def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def scriptLocalDir = "/data/jenkins/rbm/scripts"
 def env = "test"
 def libDirInJenkins = "jenkins/lib"
 def libDirInServer = "/data/lib"
 def aspectjweaverJarName = "aspectjweaver-1.9.5.jar"
 
-node('37test') {
+node('159test') {
     copyArtifacts(projectName: "${buildProjectName}")
     copyArtifacts(projectName: "${buildScriptsProjectName}")
+
+    stage('prepare appDir') {
+        if (!fileExists("${appDir}")) {
+            sh "sudo mkdir -p ${appDir}"
+            sh "sudo chown -R xkwx.xkwx ${appDir}"
+        }
+    }
 
     stage('prepare aspectjweaver jar') {
         if (!fileExists(libDirInServer)) {

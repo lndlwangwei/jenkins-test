@@ -1,13 +1,13 @@
 def buildProjectName = 'rbm-build-test'
 def buildScriptsProjectName = 'rbm-build-scripts'
-def appDir = '/home/data/apps/eureka_server'
+def appDir = '/data/apps/eureka_server'
 def artifact = 'eureka-server/target/xkw-rbm-eureka-server-1.0-SNAPSHOT.jar'
 def artifactName = 'xkw-rbm-eureka-server-1.0-SNAPSHOT.jar'
 def scriptPath = 'jenkins/rbm-test/scripts/*'
-def scriptLocalDir = "/home/data/jenkins/rbm/scripts"
+def scriptLocalDir = "/data/jenkins/rbm/scripts"
 def env = 'test'
 
-node('37test') {
+node('159test') {
     copyArtifacts(projectName: "${buildProjectName}")
     copyArtifacts(projectName: "${buildScriptsProjectName}")
 

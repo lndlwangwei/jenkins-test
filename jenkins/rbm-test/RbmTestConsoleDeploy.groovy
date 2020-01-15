@@ -17,14 +17,14 @@ node('159test') {
     stage('prepare appDir') {
         if (!fileExists("${appDir}")) {
             sh "sudo mkdir -p ${appDir}"
-            sh "sudo chown -R xkwx.xkwx ${appDir}"
+            sh "sudo chown -R wangwei.wangwei ${appDir}"
         }
     }
 
     stage('prepare aspectjweaver jar') {
         if (!fileExists(libDirInServer)) {
             sh "sudo mkdir -p ${libDirInServer}"
-            sh "sudo chown -R xkwx.xkwx ${libDirInServer}"
+            sh "sudo chown -R wangwei.wangwei ${libDirInServer}"
         }
         if (!fileExists("${libDirInServer}/${aspectjweaverJarName}")) {
             sh "cp ${libDirInJenkins}/${aspectjweaverJarName} ${libDirInServer}"

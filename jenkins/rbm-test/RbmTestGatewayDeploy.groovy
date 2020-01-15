@@ -14,7 +14,7 @@ node('195test') {
     stage('prepare appDir') {
         if (!fileExists("${appDir}")) {
             sh "sudo mkdir -p ${appDir}"
-            sh "sudo chown -R xkwx.xkwx ${appDir}"
+            sh "sudo chown -R wangwei.wangwei ${appDir}"
         }
     }
 

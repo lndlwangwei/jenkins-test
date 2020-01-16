@@ -6,10 +6,10 @@ node('28test') {
         sh 'mvn clean'
         sh 'mvn package -Dmaven.test.skip=true'
 
-//        dir('console-website') {
-//            sh 'npm install'
-//            sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
-//        }
+        dir('console-website') {
+            sh 'npm install'
+            sh 'ng build --configuration=test; cd dist/; zip -r ../rbm_test_client.zip ./'
+        }
 
         dir('api-docs') {
             sh 'zip -r api-docs.zip .'
@@ -21,6 +21,6 @@ node('28test') {
         archiveArtifacts 'file-handler-webapp/target/*.jar'
         archiveArtifacts 'api-webapp/target/*.jar'
         archiveArtifacts 'api-docs/api-docs.zip'
-//        archiveArtifacts 'console-website/rbm_test_client.zip'
+        archiveArtifacts 'console-website/rbm_test_client.zip'
     }
 }

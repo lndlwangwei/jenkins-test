@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build-test'
+def buildProjectName = 'rbm-build-pilot'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/rbm-gateway'
 def artifact = 'rbm-gateway/target/rbm-gateway-1.0-SNAPSHOT.jar'

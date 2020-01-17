@@ -1,4 +1,4 @@
-def buildProjectName = 'rbm-build-test'
+def buildProjectName = 'rbm-build-pilot'
 def buildScriptsProjectName = 'rbm-build-scripts'
 def appDir = '/data/apps/eureka_server'
 def artifact = 'eureka-server/target/xkw-rbm-eureka-server-1.0-SNAPSHOT.jar'

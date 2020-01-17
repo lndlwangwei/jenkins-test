@@ -7,7 +7,7 @@ node('28test') {
         sh 'mvn install -Dmaven.test.skip=true'
 
         dir('console-website') {
-            sh 'npm install'
+//            sh 'npm install'
             sh 'ng build --configuration=pilotrun; cd dist/; zip -r ../rbm_pilotrun_client.zip ./'
         }
 

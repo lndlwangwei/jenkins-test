@@ -7,7 +7,7 @@ def scriptPath = 'jenkins/rbm-prod/scripts/*'
 def scriptLocalDir = "/data/jenkins/rbm/scripts"
 def env = 'product'
 
-node('rbmpl') {
+node('rbm') {
     copyArtifacts(projectName: "${buildProjectName}")
     copyArtifacts(projectName: "${buildScriptsProjectName}")
 

@@ -15,6 +15,8 @@ node('28test') {
             sh 'zip -r api-docs.zip .'
         }
 
+        archiveArtifacts 'eureka-server/target/*.jar'
+        archiveArtifacts 'rbm-gateway/target/*.jar'
         archiveArtifacts 'console-webapp/target/*.jar'
         archiveArtifacts 'file-handler-webapp/target/*.jar'
         archiveArtifacts 'api-webapp/target/*.jar'

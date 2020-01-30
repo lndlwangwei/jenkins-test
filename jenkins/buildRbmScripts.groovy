@@ -1,4 +1,4 @@
-node('28test') {
+node('159test') {
     stage('prepare scripts') {
         git 'https://github.com/lndlwangwei/jenkins-test.git'
 

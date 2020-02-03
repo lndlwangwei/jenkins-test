@@ -8,7 +8,7 @@ node('159test') {
         sh 'mvn install -Dmaven.test.skip=true'
 
         dir('console-website') {
-//            sh 'npm install'
+            sh 'npm install'
             sh 'ng build --configuration=prod; cd dist/; zip -r ../rbm_prod_client.zip ./'
         }
 

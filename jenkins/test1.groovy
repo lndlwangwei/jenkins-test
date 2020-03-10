@@ -1,5 +1,5 @@
 def execute() {
-    echo "hello"
+    println "hello"
 }
 
 return this;

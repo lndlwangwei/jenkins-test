@@ -9,7 +9,7 @@ node('159test') {
     deploy = load 'jenkins/test1.groovy'
 
     def params = [a: 'wangwei', b: '20']
-    deploy.execute()
+    deploy.execute(params)
 }
 
 

@@ -1,5 +1,5 @@
-def execute(params) {
-    echo "${params.a}, ${params.b}"
+def execute() {
+    echo "hello"
 }
 
 return this;

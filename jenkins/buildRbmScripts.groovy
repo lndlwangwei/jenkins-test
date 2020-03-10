@@ -6,11 +6,11 @@ echo "${currentBuild.projectName}"
 
 node('159test') {
     def params = [a: "wangwei", b: "15"]
-
+    def deploy = load("test1.groovy")
 //    deploy.execute(params)
 
     stage('prepare scripts') {
-        def deploy = load '/jenkins/test.groovy'
+
 
         git 'https://github.com/lndlwangwei/jenkins-test.git'
 

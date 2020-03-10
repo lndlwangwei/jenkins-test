@@ -1,5 +1,5 @@
 echo "env props: "
-echo env
+echo "${env.WORKSPACE}, ${env.BUILD_ID}"
 
 node('159test') {
     stage('prepare scripts') {

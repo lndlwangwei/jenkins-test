@@ -2,7 +2,7 @@ echo "env props: "
 echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 echo "${currentBuild.projectName}"
 
-def deploy = load("test1.groovy")
+def deploy = load "test1.groovy"
 
 //node('159test') {
 //    def params = [a: "wangwei", b: "15"]

@@ -1,5 +1,6 @@
-def execute() {
+def execute(params) {
     println "hello"
+    println "${params.a}, ${params.b}"
 
     stage('prepare scripts') {
         println 'prepare scripts'

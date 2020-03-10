@@ -1,4 +1,5 @@
- echo "env props : ${env}"
+echo "env props: "
+echo "${env}"
 
 node('159test') {
     stage('prepare scripts') {

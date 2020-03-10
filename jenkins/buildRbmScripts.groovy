@@ -5,7 +5,10 @@ echo "${currentBuild.projectName}"
 def deploy
 
 node('159test') {
-    deploy = load 'test1.groovy'
+    stage('stage1') {
+        deploy = load 'test1.groovy'
+    }
+
 }
 
 

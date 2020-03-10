@@ -5,6 +5,7 @@ echo "${currentBuild.projectName}"
 def deploy
 
 node('159test') {
+    git 'https://github.com/lndlwangwei/jenkins-test.git'
     deploy = load 'test1.groovy'
 
 }

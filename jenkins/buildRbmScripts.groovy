@@ -3,7 +3,7 @@ echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 echo "${currentBuild.projectName}"
 
 node {
-    def deploy = load('/jenkins/test1.groovy')
+    def deploy = load("/jenkins/test1.groovy")
 }
 
 

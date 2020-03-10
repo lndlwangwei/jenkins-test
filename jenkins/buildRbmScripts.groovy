@@ -8,6 +8,7 @@ node('159test') {
     git 'https://github.com/lndlwangwei/jenkins-test.git'
     deploy = load 'jenkins/test1.groovy'
 
+    def params = [a: 'wangwei', b: '20']
     deploy.execute()
 }
 

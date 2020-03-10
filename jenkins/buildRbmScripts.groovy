@@ -6,7 +6,7 @@ def deploy
 
 node('159test') {
     git 'https://github.com/lndlwangwei/jenkins-test.git'
-    deploy = load 'test1.groovy'
+    deploy = load 'jenkins/test1.groovy'
 
 }
 

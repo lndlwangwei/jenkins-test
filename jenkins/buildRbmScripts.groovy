@@ -5,7 +5,7 @@ echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 //nodeMatcher.find()
 //def nodeName = nodeMatcher.group(1)
 //println nodeName
-println currentBuild.projectName.fine(/\(([^\)]+)\)/)
+println currentBuild.projectName.find(/\(([^\)]+)\)/)
 
 def deploy
 

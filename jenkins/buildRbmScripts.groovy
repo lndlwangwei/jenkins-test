@@ -5,11 +5,11 @@ echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 //nodeMatcher.find()
 //def nodeName = nodeMatcher.group(1)
 //println nodeName
-println currentBuild.projectName.find(/\(([^\)]+)\)/)
+def nodeName = currentBuild.projectName.find(/\(([^\)]+)\)/, {group -> group[1]})
 
-def deploy
+println nodeName
 
-node('159test') {
+node(nodeName) {
     git 'https://github.com/lndlwangwei/jenkins-test.git'
     deploy = load 'jenkins/test1.groovy'
 

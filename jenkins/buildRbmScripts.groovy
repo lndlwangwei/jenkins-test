@@ -1,7 +1,8 @@
 echo "env props: "
 echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 
-def nodes = currentBuild.projectName=~/\([^)]+\)/;
+def matcher = currentBuild.projectName=~/\([^\)]+\)/;
+echo matcher
 def firstNode = nodes.group()
 echo "$firstNode"
 echo "${currentBuild.projectName=~/\([^)]+\)/}"

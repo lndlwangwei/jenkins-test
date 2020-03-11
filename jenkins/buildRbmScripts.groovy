@@ -3,7 +3,7 @@ echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 
 def matcher = currentBuild.projectName=~/\([^\)]+\)/;
 //echo matcher
-def firstNode = nodes.group()
+def firstNode = matcher.group()
 echo "$firstNode"
 echo "${currentBuild.projectName=~/\([^\)]+\)/.group()}"
 

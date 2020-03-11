@@ -5,7 +5,7 @@ def matcher = currentBuild.projectName=~/\([^\)]+\)/;
 //echo matcher
 def firstNode = nodes.group()
 echo "$firstNode"
-echo "${currentBuild.projectName=~/\([^\)]+\)/}"
+echo "${currentBuild.projectName=~/\([^\)]+\)/.group()}"
 
 def deploy
 

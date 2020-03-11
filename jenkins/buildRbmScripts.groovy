@@ -1,6 +1,6 @@
 echo "env props: "
 echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
-echo "${currentBuild.projectName.split("\\(").length}"
+echo "${currentBuild.projectName=~/\([^)]+\)/.group(1)}"
 
 def deploy
 

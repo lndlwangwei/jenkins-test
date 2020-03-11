@@ -1,14 +1,15 @@
 echo "env props: "
 echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 
-def nodeMatcher = currentBuild.projectName=~/\(([^\)]+)\)/
-nodeMatcher.find()
-def nodeName = nodeMatcher.group(1)
-println nodeName
+//def nodeMatcher = currentBuild.projectName=~/\(([^\)]+)\)/
+//nodeMatcher.find()
+//def nodeName = nodeMatcher.group(1)
+//println nodeName
+println currentBuild.projectName.fine(/\(([^\)]+)\)/)
 
 def deploy
 
-node(nodeName) {
+node('159test') {
     git 'https://github.com/lndlwangwei/jenkins-test.git'
     deploy = load 'jenkins/test1.groovy'
 

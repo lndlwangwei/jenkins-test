@@ -1,5 +1,9 @@
 echo "env props: "
 echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
+
+def nodes = currentBuild.projectName=~/\([^)]+\)/;
+def firstNode = nodes.group()
+echo "$firstNode"
 echo "${currentBuild.projectName=~/\([^)]+\)/}"
 
 def deploy

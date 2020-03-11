@@ -1,7 +1,7 @@
 echo "env props: "
 echo "${env.WORKSPACE}, ${env.BUILD_ID}, ${env.BUILD_DISPLAY_NAME}"
 
-def nodeMatcher = currentBuild.projectName=~=~/\(([^\)]+)\)/
+def nodeMatcher = currentBuild.projectName=~/\(([^\)]+)\)/
 nodeMatcher.find()
 def nodeName = nodeMatcher.group(1)
 println nodeName

@@ -14,6 +14,9 @@ if [ -n javaagentJar ]; then
     javaagentOption="-javaagent:"/$javaagentJar
 fi
 
+echo "javaagentOption"
+echo $javaagentOption
+
 java $javaagentOption -Dfile.encoding=utf-8 -Djava.io.tmpdir=/data/tmp -jar ${workspace}/${artifactName} --spring.profiles.active=${env} > /dev/null &
 
 echo "$!" > ${workspace}/pid

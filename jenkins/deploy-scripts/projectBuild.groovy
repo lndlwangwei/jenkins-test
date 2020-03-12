@@ -1,4 +1,4 @@
-build(envProps) {
+def build(envProps) {
     println "inner params: ${envProps}"
 
     stage('build') {

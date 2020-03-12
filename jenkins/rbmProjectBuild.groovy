@@ -1,7 +1,7 @@
 def params = currentBuild.projectName.find(/\(([^\)]+)\)/, {group -> group[1]})
-def nodeName = params.split(',')[0]
+def nodeName = params.split(',')[0].trim()
 // env: test,pilotrun,product
-def env = params.split(',')[1]
+def env = params.split(',')[1].trim()
 
 println "nodeName: ${nodeName}, env: $env"
 

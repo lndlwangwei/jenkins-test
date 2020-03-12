@@ -10,5 +10,5 @@ node(nodeName) {
     def build = load 'jenkins/deploy-scripts/projectBuild.groovy'
 
     def envProps = [env: rbmEnv]
-    build.build(rbmEnv)
+    build.build(envProps)
 }

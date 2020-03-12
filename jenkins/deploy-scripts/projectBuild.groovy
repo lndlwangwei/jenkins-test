@@ -8,7 +8,7 @@ def build(env) {
         sh "mvn install -Dmaven.test.skip=true -P ${env}"
 
         dir('console-website') {
-//            sh 'npm install'
+            sh 'npm install'
             sh "ng build --configuration=${env}; cd dist/; zip -r ../rbm_${env}_client.zip ./"
         }
 

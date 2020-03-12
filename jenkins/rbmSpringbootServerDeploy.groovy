@@ -2,7 +2,7 @@ def nodeName = currentBuild.projectName.find(/\(([^\)]+)\)/, {group -> group[1]}
 def projectName = currentBuild.projectName.split('\\(')[0];
 def allEnvProps = [
     'rbm-pilot-console': [
-        buildProjectName: 'rbm-build-pilot',
+        buildProjectName: 'rbm-project-build(159test,pilotrun)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm_server',
         artifact: 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar',
@@ -15,7 +15,7 @@ def allEnvProps = [
         env: 'pilotrun',
     ],
     'rbm-pilot-api': [
-         buildProjectName: 'rbm-build-pilot',
+         buildProjectName: 'rbm-project-build(159test,pilotrun)',
          buildScriptsProjectName: 'rbm-build-scripts',
          scriptPath: 'jenkins/rbm-pilot/scripts/*',
          scriptLocalDir: '/data/jenkins/rbm/scripts',
@@ -28,7 +28,7 @@ def allEnvProps = [
          aspectjweaverJarName: 'aspectjweaver-1.9.5.jar',
     ],
     'rbm-pilot-eureka-server': [
-            buildProjectName: 'rbm-build-pilot',
+            buildProjectName: 'rbm-project-build(159test,pilotrun)',
             buildScriptsProjectName: 'rbm-build-scripts',
             appDir: '/data/apps/eureka_server',
             artifact: 'eureka-server/target/xkw-rbm-eureka-server-1.0-SNAPSHOT.jar',
@@ -38,7 +38,7 @@ def allEnvProps = [
             env: 'pilotrun',
     ],
     'rbm-pilot-filehandler': [
-        buildProjectName: 'rbm-build-pilot',
+        buildProjectName: 'rbm-project-build(159test,pilotrun)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/fh_pilot_server',
         artifact: 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar',
@@ -51,7 +51,7 @@ def allEnvProps = [
         env: 'pilotrun',
     ],
     'rbm-pilot-gateway': [
-        buildProjectName: 'rbm-build-pilot',
+        buildProjectName: 'rbm-project-build(159test,pilotrun)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm-gateway',
         artifact: 'rbm-gateway/target/rbm-gateway-1.0-SNAPSHOT.jar',
@@ -61,7 +61,7 @@ def allEnvProps = [
         env: 'pilotrun',
     ],
     'rbm-prod-console': [
-        buildProjectName: 'rbm-build-prod',
+        buildProjectName: 'rbm-project-build(159test,product)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm_server',
         artifact: 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar',
@@ -74,7 +74,7 @@ def allEnvProps = [
         env: 'product'    
     ],
     'rbm-prod-api': [
-        buildProjectName: 'rbm-build-prod',
+        buildProjectName: 'rbm-project-build(159test,product)',
         buildScriptsProjectName: 'rbm-build-scripts',
         scriptPath: 'jenkins/rbm-prod/scripts/*',
         scriptLocalDir: '/data/jenkins/rbm/scripts',
@@ -88,7 +88,7 @@ def allEnvProps = [
         aspectjweaverJarName: 'aspectjweaver-1.9.5.jar',
     ],
     'rbm-prod-eureka-server': [
-        buildProjectName: 'rbm-build-prod',
+        buildProjectName: 'rbm-project-build(159test,product)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/eureka_server',
         artifact: 'eureka-server/target/xkw-rbm-eureka-server-1.0-SNAPSHOT.jar',
@@ -98,7 +98,7 @@ def allEnvProps = [
         env: 'product',
     ],
     'rbm-prod-filehandler': [
-        buildProjectName: 'rbm-build-prod',
+        buildProjectName: 'rbm-project-build(159test,product)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/fh_server',
         artifact: 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar',
@@ -111,7 +111,7 @@ def allEnvProps = [
         env: 'product',
     ],
     'rbm-prod-gateway': [
-        buildProjectName: 'rbm-build-prod',
+        buildProjectName: 'rbm-project-build(159test,product)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm-gateway',
         artifact: 'rbm-gateway/target/rbm-gateway-1.0-SNAPSHOT.jar',
@@ -121,7 +121,7 @@ def allEnvProps = [
         env: 'product',
     ],
     'rbm-test-console': [
-        buildProjectName: 'rbm-build-test',
+        buildProjectName: 'rbm-project-build(159test,test)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm_server',
         artifact: 'console-webapp/target/xkw-rbm-console-webapp-1.0-SNAPSHOT.jar',
@@ -134,7 +134,7 @@ def allEnvProps = [
         env: 'test',
     ],
     'rbm-test-api': [
-        buildProjectName: 'rbm-build-test',
+        buildProjectName: 'rbm-project-build(159test,test)',
         buildScriptsProjectName: 'rbm-build-scripts',
         scriptPath: 'jenkins/rbm-test/scripts/*',
         scriptLocalDir: '/data/jenkins/rbm/scripts',
@@ -147,7 +147,7 @@ def allEnvProps = [
         aspectjweaverJarName: 'aspectjweaver-1.9.5.jar',
     ],
     'rbm-test-eureka-server': [
-        buildProjectName: 'rbm-build-test',
+        buildProjectName: 'rbm-project-build(159test,test)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/eureka_server',
         artifact: 'eureka-server/target/xkw-rbm-eureka-server-1.0-SNAPSHOT.jar',
@@ -157,7 +157,7 @@ def allEnvProps = [
         env: 'test',
     ],
     'rbm-test-filehandler': [
-        buildProjectName: 'rbm-build-test',
+        buildProjectName: 'rbm-project-build(159test,test)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm-file-handler_server',
         artifact: 'file-handler-webapp/target/xkw-rbm-file-handler-webapp-1.0-SNAPSHOT.jar',
@@ -170,7 +170,7 @@ def allEnvProps = [
         aspectjweaverJarName: 'aspectjweaver-1.9.5.jar',
     ],
     'rbm-test-gateway': [
-        buildProjectName: 'rbm-build-test',
+        buildProjectName: 'rbm-project-build(159test,test)',
         buildScriptsProjectName: 'rbm-build-scripts',
         appDir: '/data/apps/rbm-gateway',
         artifact: 'rbm-gateway/target/rbm-gateway-1.0-SNAPSHOT.jar',

@@ -10,7 +10,7 @@ def allEnvProps = [
     'rbm-prod-client': [
         buildProjectName: 'rbm-build-prod',
         appDir: '/data/apps/rbm_client',
-        artifactName: 'rbm_prod_client.zip',
+        artifactName: 'rbm_product_client.zip',
     ],
     'rbm-test-client': [
         buildProjectName: 'rbm-build-test',
@@ -18,3 +18,9 @@ def allEnvProps = [
         artifactName: 'rbm_test_client.zip',
     ]
 ]
+
+node(nodeName) {
+    git 'https://github.com/lndlwangwei/jenkins-test.git'
+    def deploy = load 'jenkins/deploy-scripts/consoleWebSiteDeploy.groovy'
+    deploy.deploy(envProp)
+}

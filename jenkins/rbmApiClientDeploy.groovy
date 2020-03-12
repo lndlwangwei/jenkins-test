@@ -21,3 +21,9 @@ def allEnvPropd = [
         domain: '10.1.23.159:8087'
     ]
 ]
+
+node(nodeName) {
+    git 'https://github.com/lndlwangwei/jenkins-test.git'
+    def deploy = load 'jenkins/deploy-scripts/consoleWebSiteDeploy.groovy'
+    deploy.deploy(envProp)
+}

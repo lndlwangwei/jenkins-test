@@ -5,7 +5,7 @@ def env = params.split('-')[1].trim()
 
 println "nodeName: ${nodeName}, env: $env"
 
-node(nodeName) {
+node('159test') {
     git 'https://github.com/lndlwangwei/jenkins-test.git'
     def build = load 'jenkins/deploy-scripts/projectBuild.groovy'
 

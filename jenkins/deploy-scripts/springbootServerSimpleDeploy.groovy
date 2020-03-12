@@ -1,9 +1,10 @@
+// 项目服务端的部署，如console，api等服务
 def deploy(env) {
     copyArtifacts(projectName: "${env.buildProjectName}")
     copyArtifacts(projectName: "${env.buildScriptsProjectName}")
 
     stage('prepare aspectjweaver jar') {
-        if (!fileExists(libDirInServer)) {
+        if (!fileExists(env.libDirInServer)) {
             sh "sudo mkdir -p ${env.libDirInServer}"
             sh "sudo chown -R xkwx.xkwx ${env.libDirInServer}"
         }
@@ -17,7 +18,7 @@ def deploy(env) {
             sh "mkdir -p ${env.scriptLocalDir}"
         }
         sh "cp -r ${env.scriptPath} ${env.scriptLocalDir}"
-        sh "chmod +x $scriptLocalDir/*.sh"
+        sh "chmod +x ${env.scriptLocalDir}/*.sh"
     }
 
     stage('backup old artifact') {
@@ -32,17 +33,19 @@ def deploy(env) {
     }
 
     stage('stop server') {
-        sh "$scriptLocalDir/stopJarServer.sh $appDir"
+        sh "${env.scriptLocalDir}/stopJarServer.sh ${env.appDir}"
     }
 
     stage('prepare artifacts') {
         sh "rm -rf ${env.appDir}/*"
-        sh "cp $artifact ${env.appDir}/"
+        sh "cp ${env.artifact} ${env.appDir}/"
     }
 
     stage('deploy') {
         withEnv(['JENKINS_NODE_COOKIE=dontkillme']) {
-            sh "$scriptLocalDir/startJarServer.sh ${env.appDir} ${env.artifactName} ${env.env} &"
+            sh "${env.scriptLocalDir}/startJarServer.sh ${env.appDir} ${env.artifactName} ${env.env} ${env.libDirInServer}/${env.aspectjweaverJarName} &"
         }
     }
 }
+
+return this

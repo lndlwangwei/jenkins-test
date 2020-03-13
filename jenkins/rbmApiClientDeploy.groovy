@@ -26,6 +26,6 @@ def envProp = allEnvProps[projectName]
 
 node(nodeName) {
     git 'https://github.com/lndlwangwei/jenkins-test.git'
-    def deploy = load 'jenkins/deploy-scripts/consoleWebSiteDeploy.groovy'
+    def deploy = load 'jenkins/deploy-scripts/apiSwaggerClientDeploy.groovy'
     deploy.deploy(envProp)
 }

@@ -3,13 +3,22 @@ def deploy(env) {
     copyArtifacts(projectName: "${env.buildProjectName}")
     copyArtifacts(projectName: "${env.buildScriptsProjectName}")
 
-    stage('prepare aspectjweaver jar') {
-        if (!fileExists(env.libDirInServer)) {
-            sh "sudo mkdir -p ${env.libDirInServer}"
-            sh "sudo chown -R xkwx.xkwx ${env.libDirInServer}"
+    stage('prepare appDir') {
+        if (!fileExists("${env.appDir}")) {
+            sh "sudo mkdir -p ${env.appDir}"
+            sh "sudo chown -R xkwx.xkwx ${env.appDir}"
         }
-        if (!fileExists("${env.libDirInServer}/${env.aspectjweaverJarName}")) {
-            sh "cp ${env.libDirInJenkins}/${env.aspectjweaverJarName} ${env.libDirInServer}"
+    }
+
+    if (env.libDirInServer != null) {
+        stage('prepare aspectjweaver jar') {
+            if (!fileExists(env.libDirInServer)) {
+                sh "sudo mkdir -p ${env.libDirInServer}"
+                sh "sudo chown -R xkwx.xkwx ${env.libDirInServer}"
+            }
+            if (!fileExists("${env.libDirInServer}/${env.aspectjweaverJarName}")) {
+                sh "cp ${env.libDirInJenkins}/${env.aspectjweaverJarName} ${env.libDirInServer}"
+            }
         }
     }
 

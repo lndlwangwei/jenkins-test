@@ -13,7 +13,7 @@ def allEnvProps = [
         artifactName: 'rbm_product_client.zip',
     ],
     'rbm-test-client': [
-        buildProjectName: 'rbm-project-build(159test,product)',
+        buildProjectName: 'rbm-project-build(159test,test)',
         appDir: '/data/apps/rbm_client',
         artifactName: 'rbm_test_client.zip',
     ]

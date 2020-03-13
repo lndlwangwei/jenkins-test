@@ -3,19 +3,19 @@ def projectName = currentBuild.projectName.split('\\(')[0]
 
 def allEnvProps = [
     'rbm-pilot-api-docs': [
-        buildProjectName: 'rbm-build-pilot(159test,pilot)',
+        buildProjectName: 'rbm-project-build(159test,pilot)',
         appDir: '/data/apps/rbs_client',
         artifactName: 'api-docs.zip',
         domain: 'rbm-pilot.xkw.com'
     ],
     'rbm-prod-api-docs': [
-        buildProjectName: 'rbm-build-prod(159test,product)',
+        buildProjectName: 'rbm-project-build(159test,product)',
         appDir: '/data/apps/rbs_client',
         artifactName: 'api-docs.zip',
         domain: 'rbm.xkw.com'
     ],
     'rbm-test-api-docs': [
-        buildProjectName: 'rbm-build-test(159test,test)',
+        buildProjectName: 'rbm-project-build(159test,test)',
         appDir: '/data/apps/rbs_client',
         artifactName: 'api-docs.zip',
         domain: '10.1.23.159:8087'

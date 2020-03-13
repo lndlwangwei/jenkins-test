@@ -16,9 +16,11 @@ def build(env) {
             sh 'zip -r api-docs.zip .'
         }
 
-        archiveArtifacts 'console-webapp/target/*.war'
-        archiveArtifacts 'file-handler-webapp/target/*.war'
-        archiveArtifacts 'api-webapp/target/*.war'
+        archiveArtifacts 'eureka-server/target/*.jar'
+        archiveArtifacts 'rbm-gateway/target/*.jar'
+        archiveArtifacts 'console-webapp/target/*.jar'
+        archiveArtifacts 'file-handler-webapp/target/*.jar'
+        archiveArtifacts 'api-webapp/target/*.jar'
         archiveArtifacts 'api-docs/api-docs.zip'
         archiveArtifacts "console-website/rbm_${env}_client.zip"
     }

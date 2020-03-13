@@ -1,7 +1,7 @@
 def nodeName = currentBuild.projectName.find(/\(([^\)]+)\)/, {group -> group[1]})
 def projectName = currentBuild.projectName.split('\\(')[0]
 
-def allEnvPropd = [
+def allEnvProps = [
     'rbm-pilot-api-docs': [
         buildProjectName: 'rbm-build-pilot(159test,pilot)',
         appDir: '/data/apps/rbs_client',
@@ -21,6 +21,8 @@ def allEnvPropd = [
         domain: '10.1.23.159:8087'
     ]
 ]
+
+def envProp = allEnvProps[projectName]
 
 node(nodeName) {
     git 'https://github.com/lndlwangwei/jenkins-test.git'

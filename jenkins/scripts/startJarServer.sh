@@ -10,7 +10,7 @@ if [ -f ${workspace}/pid ]; then
 fi
 
 javaagentOption=''
-if [ -n javaagentJar ]; then
+if [ -n "$javaagentJar" ]; then
     javaagentOption="-javaagent:"/$javaagentJar
 fi
 

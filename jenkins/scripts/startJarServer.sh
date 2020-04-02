@@ -4,6 +4,9 @@ artifactName=$2
 env=$3
 javaagentJar=$4
 
+echo $1
+echo $javaagentJar
+
 if [ -f ${workspace}/pid ]; then
     echo 'pid exists, 服务已经启动！'
     exit 0
